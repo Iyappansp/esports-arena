@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login to E-Sports Arena">
+  <title>Login | E-Sports Arena</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/dark-mode.css">
+  <link rel="stylesheet" href="./assets/css/rtl.css">
+  <style>
+    .login-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-xl);
+      position: relative;
+    }
+    .login-card {
+      max-width: 500px;
+      width: 100%;
+      animation: fadeIn 0.6s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .social-login-btn {
+      width: 100%;
+      padding: 0.875rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      color: var(--color-text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .social-login-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <div style="position: fixed; top: var(--space-lg); right: var(--space-lg); z-index: 1000; display: flex; gap: var(--space-sm);">
+    <button class="theme-toggle" data-testid="theme-toggle" aria-label="Toggle theme"></button>
+    <button class="rtl-toggle" data-testid="rtl-toggle">RTL</button>
+  </div>
+
+  <section class="login-section" data-testid="login-section">
+    <div class="login-card card-glass" data-testid="login-card">
+      <div class="text-center mb-5">
+        <a href="index.html" style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; text-decoration: none;">
+          E-SPORTS <span class="text-gradient">ARENA</span>
+        </a>
+        <p style="color: var(--color-text-muted); margin-top: var(--space-md);">Welcome back! Login to your account</p>
+      </div>
+
+      <form data-validate data-testid="login-form">
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="your@email.com" required data-testid="login-email-input">
+          <div class="form-error">Please enter a valid email</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" required data-testid="login-password-input">
+          <div class="form-error">Password is required</div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" data-testid="remember-me-checkbox" style="width: 18px; height: 18px; cursor: pointer;">
+            <span style="color: var(--color-text-muted); font-size: 0.9rem;">Remember me</span>
+          </label>
+          <a href="#" style="color: var(--color-secondary); font-size: 0.9rem; font-weight: 600;" data-testid="forgot-password-link">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn-primary w-100 mb-4" data-testid="login-submit-btn">
+          <i class="fas fa-sign-in-alt me-2"></i>Login
+        </button>
+
+        <div style="position: relative; text-align: center; margin: var(--space-xl) 0;">
+          <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--color-divider);"></div>
+          <span style="position: relative; background: var(--color-card); padding: 0 var(--space-md); color: var(--color-text-muted); font-size: 0.9rem;">Or continue with</span>
+        </div>
+
+        <div style="display: grid; gap: var(--space-md);">
+          <button type="button" class="social-login-btn" data-testid="google-login-btn">
+            <i class="fab fa-google" style="font-size: 1.2rem; color: var(--color-accent);"></i>
+            <span>Continue with Google</span>
+          </button>
+          <button type="button" class="social-login-btn" data-testid="discord-login-btn">
+            <i class="fab fa-discord" style="font-size: 1.2rem; color: var(--color-secondary);"></i>
+            <span>Continue with Discord</span>
+          </button>
+        </div>
+
+        <p style="text-align: center; margin-top: var(--space-xl); color: var(--color-text-muted);">
+          Don't have an account? <a href="signup.html" style="color: var(--color-primary); font-weight: 600;" data-testid="signup-link">Sign up</a>
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer" data-testid="footer">
+    <div class="container-custom">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h3 class="text-gradient mb-4">E-SPORTS ARENA</h3>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--space-lg);">
+            The premier multi-game esports platform connecting players, teams, and fans across Valorant, CS2, League of Legends, and Apex Legends.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-discord">
+              <i class="fab fa-discord"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-twitch">
+              <i class="fab fa-twitch"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-youtube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-6 col-lg-2">
+          <h5 style="margin-bottom: var(--space-lg); font-family: var(--font-heading);">Quick Links</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: var(--space-sm);"><a href="about.html" style="color: var(--color-text-muted);">About Us</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="team.html" style="color: var(--color-text-muted);">Our Team</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="League.html" style="color: var(--color-text-muted);">League</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="Match.html" style="color: var(--color-text-muted);">Match</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-2">
+          <h5 style="margin-bottom: var(--space-lg); font-family: var(--font-heading);">Community</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: var(--space-sm);"><a href="community.html" style="color: var(--color-text-muted);">Forums</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="streams.html" style="color: var(--color-text-muted);">Live Streams</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="gallery.html" style="color: var(--color-text-muted);">Gallery</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="contact.html" style="color: var(--color-text-muted);">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4">
+          <h5 style="margin-bottom: var(--space-lg); font-family: var(--font-heading);">Contact Info</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: var(--space-md); color: var(--color-text-muted);">
+              <i class="fas fa-envelope me-2" style="color: var(--color-primary);"></i>
+              contact@esportsarena.com
+            </li>
+            <li style="margin-bottom: var(--space-md); color: var(--color-text-muted);">
+              <i class="fas fa-phone me-2" style="color: var(--color-secondary);"></i>
+              +1 (555) 123-4567
+            </li>
+            <li style="color: var(--color-text-muted);">
+              <i class="fas fa-map-marker-alt me-2" style="color: var(--color-accent);"></i>
+              123 Esports Avenue, Gaming City, GC 12345
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p style="margin: 0;">&copy; 2026 E-Sports Arena. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/main.js" defer></script>
+  <script>
+    // Simulated login redirect
+    document.querySelector('[data-testid="login-form"]').addEventListener('submit', function(e) {
+      e.preventDefault();
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 500);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+/* =====================================================
+   DASHBOARD FUNCTIONALITY
+   Sidebar toggle, stats, and UI interactions
+   ===================================================== */
+
+// ==================== SIDEBAR TOGGLE ====================
+function initDashboardSidebar() {
+  const sidebarToggle = document.querySelector('[data-testid="sidebar-toggle"]');
+  const sidebar = document.querySelector('[data-testid="dashboard-sidebar"]');
+  const mainContent = document.querySelector('[data-testid="dashboard-main"]');
+  
+  if (sidebarToggle && sidebar && mainContent) {
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('expanded');
+      
+      // Save state
+      const isCollapsed = sidebar.classList.contains('collapsed');
+      localStorage.setItem('sidebarCollapsed', isCollapsed);
+    });
+    
+    // Load saved state
+    const savedState = localStorage.getItem('sidebarCollapsed');
+    if (savedState === 'true') {
+      sidebar.classList.add('collapsed');
+      mainContent.classList.add('expanded');
+    }
+  }
+}
+
+// ==================== DASHBOARD STATS ====================
+const dashboardStats = {
+  totalMatch: 248,
+  activePlayers: 1542,
+  liveStreams: 12,
+  totalRevenue: 125000
+};
+
+const MatchData = [
+  {
+    id: 1,
+    team1: 'Phoenix Rising',
+    team2: 'Cyber Wolves',
+    game: 'Valorant',
+    date: '2026-02-15',
+    time: '18:00',
+    status: 'Upcoming'
+  },
+  {
+    id: 2,
+    team1: 'Storm Raiders',
+    team2: 'Digital Titans',
+    game: 'CS2',
+    date: '2026-02-16',
+    time: '20:00',
+    status: 'Upcoming'
+  },
+  {
+    id: 3,
+    team1: 'Viper Squad',
+    team2: 'Elite Force',
+    game: 'League of Legends',
+    date: '2026-02-14',
+    time: '19:00',
+    status: 'Completed'
+  },
+  {
+    id: 4,
+    team1: 'Apex Legends',
+    team2: 'Shadow Assassins',
+    game: 'Apex Legends',
+    date: '2026-02-17',
+    time: '21:00',
+    status: 'Upcoming'
+  },
+  {
+    id: 5,
+    team1: 'Neon Knights',
+    team2: 'Quantum Gaming',
+    game: 'Valorant',
+    date: '2026-02-13',
+    time: '17:00',
+    status: 'Completed'
+  }
+];
+
+const playersData = [
+  {
+    id: 1,
+    name: 'ProGamer_X',
+    game: 'Valorant',
+    rank: 'Radiant',
+    winRate: '78%',
+    Match: 342
+  },
+  {
+    id: 2,
+    name: 'ShadowSniper',
+    game: 'CS2',
+    rank: 'Global Elite',
+    winRate: '72%',
+    Match: 521
+  },
+  {
+    id: 3,
+    name: 'CyberNinja',
+    game: 'League of Legends',
+    rank: 'Challenger',
+    winRate: '81%',
+    Match: 689
+  },
+  {
+    id: 4,
+    name: 'ApexHunter',
+    game: 'Apex Legends',
+    rank: 'Predator',
+    winRate: '76%',
+    Match: 412
+  }
+];
+
+// ==================== RENDER DASHBOARD DATA ====================
+function renderDashboardStats() {
+  // Render stat cards
+  const statsContainer = document.querySelector('[data-dashboard-stats]');
+  if (statsContainer) {
+    document.querySelector('[data-stat="total-Match"]').textContent = dashboardStats.totalMatch;
+    document.querySelector('[data-stat="active-players"]').textContent = dashboardStats.activePlayers.toLocaleString();
+    document.querySelector('[data-stat="live-streams"]').textContent = dashboardStats.liveStreams;
+    document.querySelector('[data-stat="total-revenue"]').textContent = `$${(dashboardStats.totalRevenue / 1000).toFixed(0)}K`;
+  }
+}
+
+function renderMatchTable() {
+  const tableBody = document.querySelector('[data-Match-table]');
+  if (!tableBody) return;
+  
+  tableBody.innerHTML = MatchData.map(match => `
+    <tr>
+      <td style="font-weight: 600; color: var(--color-text);">#${match.id}</td>
+      <td>${match.team1} vs ${match.team2}</td>
+      <td><span class="badge badge-secondary">${match.game}</span></td>
+      <td>${match.date}</td>
+      <td>${match.time}</td>
+      <td><span class="badge ${match.status === 'Upcoming' ? 'badge-primary' : 'badge-success'}">${match.status}</span></td>
+      <td>
+        <button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.8rem;" data-testid="view-match-${match.id}">View</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function renderPlayersCards() {
+  const playersContainer = document.querySelector('[data-players-cards]');
+  if (!playersContainer) return;
+  
+  playersContainer.innerHTML = playersData.map(player => `
+    <div class="card" data-testid="player-card-${player.id}">
+      <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-md);">
+        <div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">${player.name}</h4>
+          <p style="font-size: 0.875rem; margin: 0;">${player.game}</p>
+        </div>
+        <span class="badge badge-primary">${player.rank}</span>
+      </div>
+      <div style="display: flex; gap: var(--space-lg); margin-top: var(--space-md);">
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">${player.winRate}</div>
+          <div style="font-size: 0.75rem; color: var(--color-text-muted);">Win Rate</div>
+        </div>
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-secondary);">${player.Match}</div>
+          <div style="font-size: 0.75rem; color: var(--color-text-muted);">Match</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ==================== INITIALIZE DASHBOARD ====================
+function initDashboard() {
+  initDashboardSidebar();
+  renderDashboardStats();
+  renderMatchTable();
+  renderPlayersCards();
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDashboard);
+} else {
+  initDashboard();
+}

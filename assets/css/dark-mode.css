@@ -1,0 +1,162 @@
+/* =====================================================
+   DARK/LIGHT MODE THEME SYSTEM
+   ===================================================== */
+
+/* Light Mode Variables */
+body.light-mode {
+  /* Primary Colors - Adjusted for light background */
+  --color-primary: #7C3AED;
+  --color-secondary: #0891B2;
+  --color-accent: #DB2777;
+  
+  /* Background Colors */
+  --color-background: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-elevated: #F1F5F9;
+  
+  /* Text Colors */
+  --color-text: #0F172A;
+  --color-text-muted: #64748B;
+  --color-text-dark: #0F172A;
+  
+  /* Border & Divider */
+  --color-border: rgba(15, 23, 42, 0.1);
+  --color-divider: rgba(15, 23, 42, 0.05);
+  
+  /* Shadows - Lighter for light mode */
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.12);
+  --shadow-lg: 0 8px 32px rgba(15, 23, 42, 0.16);
+  --shadow-xl: 0 16px 48px rgba(15, 23, 42, 0.2);
+}
+
+/* Remove grid background in light mode */
+body.light-mode::before {
+  background-image: 
+    linear-gradient(rgba(124, 58, 237, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.02) 1px, transparent 1px);
+}
+
+/* Navbar adjustments for light mode */
+body.light-mode .navbar {
+  background: rgba(248, 250, 252, 0.9);
+  border-bottom: 1px solid var(--color-border);
+}
+
+body.light-mode .navbar.scrolled {
+  background: rgba(248, 250, 252, 0.95);
+}
+
+/* Hero section adjustments */
+body.light-mode .hero-section::before {
+  opacity: 0.15;
+}
+
+/* Form controls in light mode */
+body.light-mode .form-control {
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+body.light-mode .form-control:focus {
+  background: rgba(15, 23, 42, 0.05);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+/* Card adjustments */
+body.light-mode .card {
+  box-shadow: var(--shadow-sm);
+}
+
+body.light-mode .card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+body.light-mode .card-glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+/* Table adjustments */
+body.light-mode .table {
+  background: var(--color-card);
+}
+
+body.light-mode .table thead {
+  background: var(--color-elevated);
+}
+
+body.light-mode .table tbody tr:hover {
+  background: rgba(15, 23, 42, 0.02);
+}
+
+/* Button adjustments for light mode */
+body.light-mode .btn-ghost {
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid var(--color-border);
+}
+
+body.light-mode .btn-ghost:hover {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: relative;
+  width: 50px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background var(--transition-normal);
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background: var(--color-text);
+  border-radius: 50%;
+  transition: transform var(--transition-normal);
+}
+
+body.light-mode .theme-toggle {
+  background: rgba(15, 23, 42, 0.1);
+}
+
+body.light-mode .theme-toggle::before {
+  transform: translateX(22px);
+}
+
+/* RTL Toggle Button */
+.rtl-toggle {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-normal), border-color var(--transition-normal);
+}
+
+.rtl-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-primary);
+}
+
+body.light-mode .rtl-toggle {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+body.light-mode .rtl-toggle:hover {
+  background: rgba(15, 23, 42, 0.08);
+}

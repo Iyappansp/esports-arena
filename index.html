@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Sports Arena - Premier Multi-Game Esports Platform for Valorant, CS2, League of Legends, and Apex Legends">
+  <meta name="keywords" content="esports, gaming, valorant, cs2, league of legends, apex legends, League">
+  <title>E-Sports Arena | Premier Esports Platform</title>
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/dark-mode.css">
+  <link rel="stylesheet" href="./assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar">
+    <div class="container-custom">
+      <div class="row align-items-center">
+        <div class="col-6 col-lg-3">
+          <a href="index.html" class="navbar-brand" data-testid="navbar-brand">
+            E-SPORTS <span>ARENA</span>
+          </a>
+        </div>
+        
+        <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center gap-3">
+          <!-- Desktop Menu -->
+          <div class="d-none d-lg-flex align-items-center gap-4" data-testid="navbar-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="home-2.html" class="nav-link">Home 2</a>
+            <a href="League.html" class="nav-link">League</a>
+            <a href="Match.html" class="nav-link">Match</a>
+            <a href="team.html" class="nav-link">Team</a>
+
+            <a href="gallery.html" class="nav-link">Gallery</a>
+            <a href="community.html" class="nav-link">Community</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+          </div>
+          
+          <!-- Theme & RTL Toggles -->
+          <div class="d-flex align-items-center gap-2">
+            <button class="theme-toggle" data-testid="theme-toggle" aria-label="Toggle theme"></button>
+            <button class="rtl-toggle" data-testid="rtl-toggle">RTL</button>
+            <a href="dashboard.html" class="btn-primary d-none d-md-inline-block me-2" style="background: transparent; border: 1px solid var(--color-primary);" data-testid="dashboard-btn">Dashboard</a>
+            <a href="login.html" class="btn-primary d-none d-md-inline-block" data-testid="login-btn">Login</a>
+          </div>
+          
+          <!-- Mobile Menu Toggle -->
+          <button class="navbar-toggler d-lg-none" data-testid="navbar-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero-section" id="home" data-testid="hero-section">
+    <div class="container-custom">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="hero-title text-gradient" data-testid="hero-title">
+            DOMINATE<br>DIGITAL ARENA
+          </h1>
+          <p class="hero-subtitle" data-testid="hero-subtitle">
+            Join the ultimate multi-game esports platform. Compete in Valorant, CS2, League of Legends, and Apex Legends League with players worldwide.
+          </p>
+          <div class="d-flex flex-wrap gap-3" data-testid="hero-cta-group">
+            <a href="team.html" class="btn-primary" data-testid="join-team-btn">
+              <i class="fas fa-users me-2"></i>Join Team
+            </a>
+            <a href="Match.html" class="btn-secondary" data-testid="view-Match-btn">
+              <i class="fas fa-gamepad me-2"></i>View Match
+            </a>
+            <a href="streams.html" class="btn-ghost" data-testid="watch-live-btn">
+              <i class="fas fa-circle" style="color: var(--color-accent);"></i> Watch Live
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="card-glass reveal" data-testid="live-stream-card">
+            <div style="position: relative; padding-bottom: 56.25%; background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2)); border-radius: var(--radius-lg); overflow: hidden;">
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                <i class="fas fa-play-circle" style="font-size: 4rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                <h3 style="font-size: 1.5rem; margin: 0;">LIVE STREAM</h3>
+                <p style="margin: 0; color: var(--color-text-muted);">Phoenix vs Cyber Wolves</p>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div class="d-flex align-items-center gap-2">
+                <span class="badge badge-accent">LIVE</span>
+                <span style="font-size: 0.9rem; color: var(--color-text-muted);">
+                  <i class="fas fa-eye me-1"></i>12.5K watching
+                </span>
+              </div>
+              <span class="badge badge-secondary">Valorant</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== UPCOMING Match ==================== -->
+  <section class="section-padding" id="Match" data-testid="upcoming-Match-section">
+    <div class="container-custom">
+      <div class="text-center mb-5 reveal">
+        <h2 class="text-gradient" data-testid="Match-title">UPCOMING Match</h2>
+        <p style="color: var(--color-text-muted); font-size: 1.1rem;">Don't miss the action</p>
+      </div>
+      
+      <div class="row g-4">
+        <!-- Match 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card reveal" data-testid="match-card-1">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <span class="badge badge-secondary">Valorant</span>
+              <span style="font-size: 0.85rem; color: var(--color-text-muted);">Feb 15, 2026</span>
+            </div>
+            
+            <div class="text-center mb-4">
+              <div class="d-flex justify-content-around align-items-center mb-3">
+                <div>
+                  <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Phoenix Rising</h4>
+                  <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">Rank #2</p>
+                </div>
+                <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">VS</div>
+                <div>
+                  <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Cyber Wolves</h4>
+                  <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">Rank #5</p>
+                </div>
+              </div>
+              
+              <div data-countdown="2026-02-15T18:00:00" data-testid="countdown-1"></div>
+            </div>
+            
+            <a href="Match.html" class="btn-ghost w-100" data-testid="match-details-1">
+              <i class="fas fa-info-circle me-2"></i>Match Details
+            </a>
+          </div>
+        </div>
+        
+        <!-- Match 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card reveal" data-testid="match-card-2">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <span class="badge badge-secondary">CS2</span>
+              <span style="font-size: 0.85rem; color: var(--color-text-muted);">Feb 16, 2026</span>
+            </div>
+            
+            <div class="text-center mb-4">
+              <div class="d-flex justify-content-around align-items-center mb-3">
+                <div>
+                  <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Storm Raiders</h4>
+                  <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">Rank #1</p>
+                </div>
+                <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">VS</div>
+                <div>
+                  <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Digital Titans</h4>
+                  <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">Rank #3</p>
+                </div>
+              </div>
+              
+              <div data-countdown="2026-02-16T20:00:00" data-testid="countdown-2"></div>
+            </div>
+            
+            <a href="Match.html" class="btn-ghost w-100" data-testid="match-details-2">
+              <i class="fas fa-info-circle me-2"></i>Match Details
+            </a>
+          </div>
+        </div>
+        
+        <!-- Match 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card reveal" data-testid="match-card-3">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <span class="badge badge-secondary">League of Legends</span>
+              <span style="font-size: 0.85rem; color: var(--color-text-muted);">Feb 17, 2026</span>
+            </div>
+            
+            <div class="text-center mb-4">
+              <div class="d-flex justify-content-around align-items-center mb-3">
+                <div>
+                  <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Viper Squad</h4>
+                  <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">Rank #4</p>
+                </div>
+                <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">VS</div>
+                <div>
+                  <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Elite Force</h4>
+                  <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">Rank #6</p>
+                </div>
+              </div>
+              
+              <div data-countdown="2026-02-17T19:00:00" data-testid="countdown-3"></div>
+            </div>
+            
+            <a href="Match.html" class="btn-ghost w-100" data-testid="match-details-3">
+              <i class="fas fa-info-circle me-2"></i>Match Details
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED PLAYERS ==================== -->
+  <section class="section-padding" style="background: var(--color-card);" data-testid="featured-players-section">
+    <div class="container-custom">
+      <div class="text-center mb-5 reveal">
+        <h2 class="text-gradient" data-testid="players-title">FEATURED PLAYERS</h2>
+        <p style="color: var(--color-text-muted); font-size: 1.1rem;">Meet our pro roster</p>
+      </div>
+      
+      <div class="row g-4">
+        <!-- Player 1 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="card reveal" data-testid="player-card-1">
+            <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--gradient-primary); margin: 0 auto var(--space-lg); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
+              <i class="fas fa-user-ninja"></i>
+            </div>
+            <div class="text-center">
+              <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">ProGamer_X</h4>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-md);">
+                <i class="fas fa-gamepad me-2"></i>Valorant
+              </p>
+              <div class="d-flex justify-content-around" style="border-top: 1px solid var(--color-divider); padding-top: var(--space-md);">
+                <div>
+                  <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary);">78%</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Win Rate</div>
+                </div>
+                <div>
+                  <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-secondary);">342</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Match</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Player 2 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="card reveal" data-testid="player-card-2">
+            <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--gradient-secondary); margin: 0 auto var(--space-lg); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
+              <i class="fas fa-crosshairs"></i>
+            </div>
+            <div class="text-center">
+              <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">ShadowSniper</h4>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-md);">
+                <i class="fas fa-gamepad me-2"></i>CS2
+              </p>
+              <div class="d-flex justify-content-around" style="border-top: 1px solid var(--color-divider); padding-top: var(--space-md);">
+                <div>
+                  <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary);">72%</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Win Rate</div>
+                </div>
+                <div>
+                  <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-secondary);">521</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Match</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Player 3 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="card reveal" data-testid="player-card-3">
+            <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--gradient-primary); margin: 0 auto var(--space-lg); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="text-center">
+              <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">CyberNinja</h4>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-md);">
+                <i class="fas fa-gamepad me-2"></i>League of Legends
+              </p>
+              <div class="d-flex justify-content-around" style="border-top: 1px solid var(--color-divider); padding-top: var(--space-md);">
+                <div>
+                  <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary);">81%</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Win Rate</div>
+                </div>
+                <div>
+                  <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-secondary);">689</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Match</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Player 4 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="card reveal" data-testid="player-card-4">
+            <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--gradient-secondary); margin: 0 auto var(--space-lg); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="text-center">
+              <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">ApexHunter</h4>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-md);">
+                <i class="fas fa-gamepad me-2"></i>Apex Legends
+              </p>
+              <div class="d-flex justify-content-around" style="border-top: 1px solid var(--color-divider); padding-top: var(--space-md);">
+                <div>
+                  <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary);">76%</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Win Rate</div>
+                </div>
+                <div>
+                  <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-secondary);">412</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Match</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5 reveal">
+        <a href="team.html" class="btn-primary" data-testid="view-full-roster-btn">
+          <i class="fas fa-users me-2"></i>View Full Roster
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ACHIEVEMENTS ==================== -->
+  <section class="section-padding" data-testid="achievements-section">
+    <div class="container-custom">
+      <div class="text-center mb-5 reveal">
+        <h2 class="text-gradient" data-testid="achievements-title">OUR ACHIEVEMENTS</h2>
+        <p style="color: var(--color-text-muted); font-size: 1.1rem;">Breaking records since 2020</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="card text-center reveal" data-testid="stat-card-1">
+            <i class="fas fa-trophy" style="font-size: 3rem; color: var(--color-primary); margin-bottom: var(--space-md);"></i>
+            <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;" data-counter="48">0</h3>
+            <p style="color: var(--color-text-muted); margin: 0;">League Won</p>
+          </div>
+        </div>
+        
+        <div class="col-sm-6 col-lg-3">
+          <div class="card text-center reveal" data-testid="stat-card-2">
+            <i class="fas fa-users" style="font-size: 3rem; color: var(--color-secondary); margin-bottom: var(--space-md);"></i>
+            <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;" data-counter="1542">0</h3>
+            <p style="color: var(--color-text-muted); margin: 0;">Active Players</p>
+          </div>
+        </div>
+        
+        <div class="col-sm-6 col-lg-3">
+          <div class="card text-center reveal" data-testid="stat-card-3">
+            <i class="fas fa-gamepad" style="font-size: 3rem; color: var(--color-accent); margin-bottom: var(--space-md);"></i>
+            <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;" data-counter="2840">0</h3>
+            <p style="color: var(--color-text-muted); margin: 0;">Match Played</p>
+          </div>
+        </div>
+        
+        <div class="col-sm-6 col-lg-3">
+          <div class="card text-center reveal" data-testid="stat-card-4">
+            <i class="fas fa-dollar-sign" style="font-size: 3rem; color: var(--color-primary); margin-bottom: var(--space-md);"></i>
+            <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;" data-counter="850">0</h3>
+            <p style="color: var(--color-text-muted); margin: 0;">Prize Pool (K)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SPONSORS ==================== -->
+  <section class="section-padding" style="background: var(--color-card);" data-testid="sponsors-section">
+    <div class="container-custom">
+      <div class="text-center mb-5 reveal">
+        <h2 class="text-gradient" data-testid="sponsors-title">OUR SPONSORS</h2>
+        <p style="color: var(--color-text-muted); font-size: 1.1rem;">Powered by industry leaders</p>
+      </div>
+      
+      <div class="row g-4 align-items-center justify-content-center">
+        <div class="col-6 col-md-3">
+          <div class="card text-center reveal" style="padding: var(--space-xl); min-height: 120px; display: flex; align-items: center; justify-content: center;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin: 0; color: var(--color-primary);">RAZER</h4>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card text-center reveal" style="padding: var(--space-xl); min-height: 120px; display: flex; align-items: center; justify-content: center;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin: 0; color: var(--color-secondary);">LOGITECH</h4>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card text-center reveal" style="padding: var(--space-xl); min-height: 120px; display: flex; align-items: center; justify-content: center;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin: 0; color: var(--color-accent);">CORSAIR</h4>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card text-center reveal" style="padding: var(--space-xl); min-height: 120px; display: flex; align-items: center; justify-content: center;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin: 0; color: var(--color-primary);">HYPERX</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NEWSLETTER ==================== -->
+  <section class="section-padding" data-testid="newsletter-section">
+    <div class="container-custom">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card-glass text-center reveal" data-testid="newsletter-card">
+            <i class="fas fa-envelope" style="font-size: 3rem; color: var(--color-primary); margin-bottom: var(--space-lg);"></i>
+            <h2 class="text-gradient mb-4" data-testid="newsletter-title">STAY IN THE GAME</h2>
+            <p style="color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: var(--space-xl);">
+              Subscribe to our newsletter for tournament updates, exclusive content, and insider news.
+            </p>
+            
+            <form data-validate data-testid="newsletter-form">
+              <div class="row g-3">
+                <div class="col-md-8">
+                  <div class="form-group mb-0">
+                    <input 
+                      type="email" 
+                      class="form-control" 
+                      placeholder="Enter your email" 
+                      required 
+                      data-testid="newsletter-email-input"
+                    >
+                    <div class="form-error">Please enter a valid email address</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <button type="submit" class="btn-primary w-100" data-testid="newsletter-submit-btn">
+                    <i class="fas fa-paper-plane me-2"></i>Subscribe
+                  </button>
+                </div>
+              </div>
+              <div data-success-message style="display: none; color: var(--color-primary); margin-top: var(--space-md); font-weight: 600;">
+                <i class="fas fa-check-circle me-2"></i>Thanks for subscribing!
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" data-testid="footer">
+    <div class="container-custom">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h3 class="text-gradient mb-4">E-SPORTS ARENA</h3>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--space-lg);">
+            The premier multi-game esports platform connecting players, teams, and fans across Valorant, CS2, League of Legends, and Apex Legends.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-discord">
+              <i class="fab fa-discord"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-twitch">
+              <i class="fab fa-twitch"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-youtube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-6 col-lg-2">
+          <h5 style="margin-bottom: var(--space-lg); font-family: var(--font-heading);">Quick Links</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: var(--space-sm);"><a href="about.html" style="color: var(--color-text-muted);">About Us</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="team.html" style="color: var(--color-text-muted);">Our Team</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="League.html" style="color: var(--color-text-muted);">League</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="Match.html" style="color: var(--color-text-muted);">Match</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-2">
+          <h5 style="margin-bottom: var(--space-lg); font-family: var(--font-heading);">Community</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: var(--space-sm);"><a href="community.html" style="color: var(--color-text-muted);">Forums</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="streams.html" style="color: var(--color-text-muted);">Live Streams</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="gallery.html" style="color: var(--color-text-muted);">Gallery</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="contact.html" style="color: var(--color-text-muted);">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4">
+          <h5 style="margin-bottom: var(--space-lg); font-family: var(--font-heading);">Contact Info</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: var(--space-md); color: var(--color-text-muted);">
+              <i class="fas fa-envelope me-2" style="color: var(--color-primary);"></i>
+              contact@esportsarena.com
+            </li>
+            <li style="margin-bottom: var(--space-md); color: var(--color-text-muted);">
+              <i class="fas fa-phone me-2" style="color: var(--color-secondary);"></i>
+              +1 (555) 123-4567
+            </li>
+            <li style="color: var(--color-text-muted);">
+              <i class="fas fa-map-marker-alt me-2" style="color: var(--color-accent);"></i>
+              123 Esports Avenue, Gaming City, GC 12345
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p style="margin: 0;">&copy; 2026 E-Sports Arena. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom Scripts -->
+  <script src="./assets/js/main.js" defer></script>
+  <script src="./assets/js/countdown.js" defer></script>
+</body>
+</html>

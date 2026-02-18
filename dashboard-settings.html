@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Sports Arena Settings - Dashboard">
+  <title>Settings | E-Sports Arena Dashboard</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/dark-mode.css">
+  <link rel="stylesheet" href="./assets/css/rtl.css">
+  <style>
+    .dashboard-wrapper {
+      display: flex;
+      min-height: 100vh;
+      padding-top: 90px;
+    }
+    .dashboard-sidebar {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 280px;
+      height: calc(100vh - 70px);
+      background: var(--color-card);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-xl);
+      overflow-y: auto;
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+    .dashboard-sidebar.collapsed {
+      left: -280px;
+    }
+    .dashboard-main {
+      flex: 1;
+      margin-left: 280px;
+      padding: var(--space-xl);
+      transition: margin-left 0.3s ease;
+    }
+    .dashboard-main.expanded {
+      margin-left: 0;
+    }
+    .sidebar-toggle {
+      position: fixed;
+      top: 85px;
+      left: var(--space-lg);
+      z-index: 1000;
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .sidebar-toggle:hover {
+      background: var(--color-elevated);
+      border-color: var(--color-primary);
+    }
+    .sidebar-nav-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.3s ease;
+      margin-bottom: var(--space-sm);
+    }
+    .sidebar-nav-item:hover, .sidebar-nav-item.active {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--color-primary);
+    }
+    @media (max-width: 991px) {
+      .dashboard-sidebar {
+        left: -280px;
+      }
+      .dashboard-main {
+        margin-left: 0;
+      }
+      .sidebar-toggle {
+        left: var(--space-md);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container-fluid px-4">
+      <div class="row align-items-center w-100">
+        <div class="col-6 col-lg-3">
+          <a href="index.html" class="navbar-brand" data-testid="navbar-brand">E-SPORTS <span>ARENA</span></a>
+        </div>
+        <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center gap-3">
+          <div class="d-flex align-items-center gap-2">
+            <button class="theme-toggle" data-testid="theme-toggle" aria-label="Toggle theme"></button>
+            <button class="rtl-toggle" data-testid="rtl-toggle">RTL</button>
+            <a href="index.html" class="btn-ghost" data-testid="logout-btn" style="padding: 0.5rem 1rem;">
+              <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <button class="sidebar-toggle" data-testid="sidebar-toggle" aria-label="Toggle sidebar">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="dashboard-wrapper">
+    <aside class="dashboard-sidebar" data-testid="dashboard-sidebar">
+      <h5 style="font-family: var(--font-heading); margin-bottom: var(--space-xl); color: var(--color-text);">DASHBOARD</h5>
+      
+      <nav>
+        <a href="dashboard.html" class="sidebar-nav-item" data-testid="nav-overview">
+          <i class="fas fa-th-large"></i>
+          <span>Overview</span>
+        </a>
+        <a href="dashboard-match.html" class="sidebar-nav-item" data-testid="nav-Match">
+          <i class="fas fa-gamepad"></i>
+          <span>Match</span>
+        </a>
+        <a href="dashboard-players.html" class="sidebar-nav-item" data-testid="nav-players">
+          <i class="fas fa-users"></i>
+          <span>Players</span>
+        </a>
+        <a href="dashboard-league.html" class="sidebar-nav-item" data-testid="nav-League">
+          <i class="fas fa-trophy"></i>
+          <span>League</span>
+        </a>
+        <a href="dashboard-notifications.html" class="sidebar-nav-item" data-testid="nav-notifications">
+          <i class="fas fa-bell"></i>
+          <span>Notifications</span>
+          <span class="badge badge-accent" style="margin-left: auto; font-size: 0.7rem;">5</span>
+        </a>
+        <a href="dashboard-settings.html" class="sidebar-nav-item active" data-testid="nav-settings">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main" data-testid="dashboard-main">
+      <div class="mb-5">
+        <h1 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.5rem;">Settings</h1>
+        <p style="color: var(--color-text-muted);">Configure your dashboard preferences.</p>
+      </div>
+
+       <div class="row g-4">
+         <div class="col-lg-6">
+           <div class="card h-100">
+             <h3 class="" style="font-family: var(--font-heading); font-size: 1.25rem;">General Settings</h3>
+             <hr style="border-color: var(--color-divider); margin: var(--space-md) 0;">
+             <form>
+               <div class="form-group">
+                 <label class="form-label">Username</label>
+                 <input type="text" class="form-control" value="Admin">
+               </div>
+               <div class="form-group">
+                 <label class="form-label">Email</label>
+                 <input type="email" class="form-control" value="admin@esportsarena.com">
+               </div>
+               
+               <div class="form-check form-switch custom-switch mb-3">
+                  <input class="form-check-input" type="checkbox" id="notificationsSwitch" checked style="background-color: var(--color-primary); border-color: var(--color-primary);">
+                  <label class="form-check-label text-white" for="notificationsSwitch">Enable Email Notifications</label>
+               </div>
+
+                <div class="form-check form-switch custom-switch">
+                  <input class="form-check-input" type="checkbox" id="publicProfile" style="background-color: var(--color-secondary); border-color: var(--color-secondary);">
+                  <label class="form-check-label text-white" for="publicProfile">Public Profile</label>
+               </div>
+
+               <div class="mt-4">
+                 <button class="btn-primary" type="submit">Save Changes</button>
+               </div>
+             </form>
+           </div>
+         </div>
+
+         <div class="col-lg-6">
+           <div class="card h-100">
+             <h3 class="" style="font-family: var(--font-heading); font-size: 1.25rem;">Appearance</h3>
+             <hr style="border-color: var(--color-divider); margin: var(--space-md) 0;">
+             
+             <div class="mb-4">
+               <label class="form-label">Theme</label>
+               <div class="d-flex gap-3">
+                 <button class="btn-ghost active" style="border-color: var(--color-primary); background: rgba(139, 92, 246, 0.1);">Dark</button>
+                 <button class="btn-ghost">Light</button>
+                 <button class="btn-ghost">System</button>
+               </div>
+             </div>
+
+              <div class="mb-4">
+               <label class="form-label">Language</label>
+               <select class="form-control">
+                 <option>English (US)</option>
+                 <option>Spanish</option>
+                 <option>French</option>
+                 <option>German</option>
+                 <option>Chinese</option>
+               </select>
+             </div>
+
+             <div class="mb-4">
+               <label class="form-label">Custom CSS (Advanced)</label>
+               <textarea class="form-control" rows="4" placeholder="/* Enter custom CSS here */"></textarea>
+               <small style="color: var(--color-text-muted);">Use with caution.</small>
+             </div>
+           </div>
+         </div>
+       </div>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/main.js" defer></script>
+  <script src="./assets/js/dashboard.js" defer></script>
+</body>
+</html>

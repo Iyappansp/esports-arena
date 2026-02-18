@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Sports Arena Match - View upcoming and past esports Match">
+  <title>Match | E-Sports Arena</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/dark-mode.css">
+  <link rel="stylesheet" href="./assets/css/rtl.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container-custom">
+      <div class="row align-items-center">
+        <div class="col-6 col-lg-3">
+          <a href="index.html" class="navbar-brand" data-testid="navbar-brand">E-SPORTS <span>ARENA</span></a>
+        </div>
+        <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center gap-3">
+          <div class="d-none d-lg-flex align-items-center gap-4" data-testid="navbar-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="home-2.html" class="nav-link">Home 2</a>
+            <a href="League.html" class="nav-link">League</a>
+            <a href="Match.html" class="nav-link">Match</a>
+            <a href="team.html" class="nav-link">Team</a>
+
+            <a href="gallery.html" class="nav-link">Gallery</a>
+            <a href="community.html" class="nav-link">Community</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <button class="theme-toggle" data-testid="theme-toggle" aria-label="Toggle theme"></button>
+            <button class="rtl-toggle" data-testid="rtl-toggle">RTL</button>
+            <a href="dashboard.html" class="btn-primary d-none d-md-inline-block me-2" style="background: transparent; border: 1px solid var(--color-primary);" data-testid="dashboard-btn">Dashboard</a>
+            <a href="login.html" class="btn-primary d-none d-md-inline-block" data-testid="login-btn">Login</a>
+          </div>
+          <button class="navbar-toggler d-lg-none" data-testid="navbar-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section" style="min-height: 50vh;" data-testid="Match-hero">
+    <div class="container-custom text-center">
+      <h1 class="hero-title text-gradient" data-testid="hero-title">Match</h1>
+      <p class="hero-subtitle" data-testid="hero-subtitle">Follow upcoming and past competitive Match</p>
+    </div>
+  </section>
+
+  <section class="section-padding" data-testid="upcoming-Match-section">
+    <div class="container-custom">
+      <div class="text-center mb-5 reveal">
+        <h2 class="text-gradient">UPCOMING Match</h2>
+      </div>
+      
+      <div class="card reveal">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Match</th>
+                <th>Game</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Tournament</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Cyber Wolves</td>
+                <td><span class="badge badge-secondary">Valorant</span></td>
+                <td>Feb 15, 2026</td>
+                <td>18:00 UTC</td>
+                <td>Champions League</td>
+                <td><span class="badge badge-primary">Upcoming</span></td>
+                <td><button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.8rem;" data-testid="watch-match-1">Watch</button></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Digital Titans</td>
+                <td><span class="badge badge-secondary">CS2</span></td>
+                <td>Feb 16, 2026</td>
+                <td>20:00 UTC</td>
+                <td>Pro Circuit</td>
+                <td><span class="badge badge-primary">Upcoming</span></td>
+                <td><button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.8rem;" data-testid="watch-match-2">Watch</button></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--color-text);">Viper Squad vs Elite Force</td>
+                <td><span class="badge badge-secondary">League of Legends</span></td>
+                <td>Feb 17, 2026</td>
+                <td>19:00 UTC</td>
+                <td>Summer Split</td>
+                <td><span class="badge badge-primary">Upcoming</span></td>
+                <td><button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.8rem;" data-testid="watch-match-3">Watch</button></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--color-text);">Shadow Assassins vs Apex Predators</td>
+                <td><span class="badge badge-secondary">Apex Legends</span></td>
+                <td>Feb 18, 2026</td>
+                <td>21:00 UTC</td>
+                <td>Battle Royale Cup</td>
+                <td><span class="badge badge-primary">Upcoming</span></td>
+                <td><button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.8rem;" data-testid="watch-match-4">Watch</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" style="background: var(--color-card);" data-testid="past-Match-section">
+    <div class="container-custom">
+      <div class="text-center mb-5 reveal">
+        <h2 class="text-gradient">PAST Match</h2>
+      </div>
+      
+      <div class="card reveal">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Match</th>
+                <th>Game</th>
+                <th>Date</th>
+                <th>Score</th>
+                <th>Winner</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Elite Force</td>
+                <td><span class="badge badge-secondary">Valorant</span></td>
+                <td>Feb 12, 2026</td>
+                <td style="color: var(--color-primary);">13-8</td>
+                <td style="color: var(--color-text);">Phoenix Rising</td>
+                <td><button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.8rem;" data-testid="replay-match-1">Replay</button></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Cyber Wolves</td>
+                <td><span class="badge badge-secondary">CS2</span></td>
+                <td>Feb 11, 2026</td>
+                <td style="color: var(--color-primary);">16-12</td>
+                <td style="color: var(--color-text);">Storm Raiders</td>
+                <td><button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.8rem;" data-testid="replay-match-2">Replay</button></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--color-text);">Digital Titans vs Viper Squad</td>
+                <td><span class="badge badge-secondary">CS2</span></td>
+                <td>Feb 10, 2026</td>
+                <td style="color: var(--color-primary);">16-14</td>
+                <td style="color: var(--color-text);">Digital Titans</td>
+                <td><button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.8rem;" data-testid="replay-match-3">Replay</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" data-testid="footer">
+    <div class="container-custom">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h3 class="text-gradient mb-4">E-SPORTS ARENA</h3>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--space-lg);">
+            The premier multi-game esports platform connecting players, teams, and fans across Valorant, CS2, League of Legends, and Apex Legends.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-discord">
+              <i class="fab fa-discord"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-twitch">
+              <i class="fab fa-twitch"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" data-testid="social-youtube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-6 col-lg-2">
+          <h5 style="margin-bottom: var(--space-lg); font-family: var(--font-heading);">Quick Links</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: var(--space-sm);"><a href="about.html" style="color: var(--color-text-muted);">About Us</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="team.html" style="color: var(--color-text-muted);">Our Team</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="League.html" style="color: var(--color-text-muted);">League</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="Match.html" style="color: var(--color-text-muted);">Match</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-2">
+          <h5 style="margin-bottom: var(--space-lg); font-family: var(--font-heading);">Community</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: var(--space-sm);"><a href="community.html" style="color: var(--color-text-muted);">Forums</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="streams.html" style="color: var(--color-text-muted);">Live Streams</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="gallery.html" style="color: var(--color-text-muted);">Gallery</a></li>
+            <li style="margin-bottom: var(--space-sm);"><a href="contact.html" style="color: var(--color-text-muted);">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4">
+          <h5 style="margin-bottom: var(--space-lg); font-family: var(--font-heading);">Contact Info</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: var(--space-md); color: var(--color-text-muted);">
+              <i class="fas fa-envelope me-2" style="color: var(--color-primary);"></i>
+              contact@esportsarena.com
+            </li>
+            <li style="margin-bottom: var(--space-md); color: var(--color-text-muted);">
+              <i class="fas fa-phone me-2" style="color: var(--color-secondary);"></i>
+              +1 (555) 123-4567
+            </li>
+            <li style="color: var(--color-text-muted);">
+              <i class="fas fa-map-marker-alt me-2" style="color: var(--color-accent);"></i>
+              123 Esports Avenue, Gaming City, GC 12345
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p style="margin: 0;">&copy; 2026 E-Sports Arena. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+/* =====================================================
+   RTL (Right-to-Left) SUPPORT
+   Arabic, Hebrew, Persian language support
+   ===================================================== */
+
+[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Navbar RTL */
+[dir="rtl"] .navbar-menu {
+  left: auto;
+  right: -100%;
+  border-right: none;
+  border-left: 1px solid var(--color-border);
+}
+
+[dir="rtl"] .navbar-menu.active {
+  right: 0;
+}
+
+/* Navigation Links RTL */
+[dir="rtl"] .nav-link::after {
+  left: auto;
+  right: 50%;
+}
+
+[dir="rtl"] .nav-link:hover::after,
+[dir="rtl"] .nav-link.active::after {
+  left: auto;
+  right: 0;
+}
+
+/* Cards & Content RTL */
+[dir="rtl"] .card {
+  text-align: right;
+}
+
+/* Forms RTL */
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+/* Tables RTL */
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+  text-align: right;
+}
+
+/* Dashboard Sidebar RTL */
+[dir="rtl"] .dashboard-sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--color-border);
+}
+
+[dir="rtl"] .dashboard-sidebar.collapsed {
+  right: -280px;
+}
+
+[dir="rtl"] .dashboard-main {
+  margin-right: 280px;
+  margin-left: 0;
+}
+
+[dir="rtl"] .dashboard-main.expanded {
+  margin-right: 0;
+}
+
+/* Sidebar Toggle Button RTL */
+[dir="rtl"] .sidebar-toggle {
+  left: auto;
+  right: var(--space-lg);
+}
+
+/* Badges & Tags RTL */
+[dir="rtl"] .badge {
+  margin-left: var(--space-sm);
+  margin-right: 0;
+}
+
+/* Social Icons RTL */
+[dir="rtl"] .social-icon {
+  margin-left: var(--space-md);
+  margin-right: 0;
+}
+
+[dir="rtl"] .social-icon:last-child {
+  margin-left: 0;
+}
+
+/* Button Groups RTL */
+[dir="rtl"] .btn-group .btn-primary,
+[dir="rtl"] .btn-group .btn-secondary,
+[dir="rtl"] .btn-group .btn-ghost {
+  margin-left: var(--space-md);
+  margin-right: 0;
+}
+
+[dir="rtl"] .btn-group .btn-primary:first-child,
+[dir="rtl"] .btn-group .btn-secondary:first-child,
+[dir="rtl"] .btn-group .btn-ghost:first-child {
+  margin-left: 0;
+}
+
+/* Footer RTL */
+[dir="rtl"] .footer {
+  text-align: right;
+}
+
+/* Animations RTL */
+[dir="rtl"] .reveal {
+  transform: translateY(30px);
+}
+
+[dir="rtl"] .reveal.active {
+  transform: translateY(0);
+}
+
+/* Mobile Menu RTL */
+@media (max-width: 991px) {
+  [dir="rtl"] .navbar-menu {
+    right: -100%;
+    left: auto;
+    border-left: 1px solid var(--color-border);
+    border-right: none;
+  }
+  
+  [dir="rtl"] .navbar-menu.active {
+    right: 0;
+  }
+}
+
+/* Responsive Text Alignment */
+@media (max-width: 768px) {
+  [dir="rtl"] .text-center-mobile {
+    text-align: center;
+  }
+}

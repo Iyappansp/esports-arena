@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Sports Arena Dashboard">
+  <title>Dashboard | E-Sports Arena</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/dark-mode.css">
+  <link rel="stylesheet" href="./assets/css/rtl.css">
+  <style>
+    .dashboard-wrapper {
+      display: flex;
+      min-height: 100vh;
+      padding-top: 90px;
+    }
+    .dashboard-sidebar {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 280px;
+      height: calc(100vh - 70px);
+      background: var(--color-card);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-xl);
+      overflow-y: auto;
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+    .dashboard-sidebar.collapsed {
+      left: -280px;
+    }
+    .dashboard-main {
+      flex: 1;
+      margin-left: 280px;
+      padding: var(--space-xl);
+      transition: margin-left 0.3s ease;
+    }
+    .dashboard-main.expanded {
+      margin-left: 0;
+    }
+    .sidebar-toggle {
+      position: fixed;
+      top: 85px;
+      left: var(--space-lg);
+      z-index: 1000;
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .sidebar-toggle:hover {
+      background: var(--color-elevated);
+      border-color: var(--color-primary);
+    }
+    .sidebar-nav-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.3s ease;
+      margin-bottom: var(--space-sm);
+    }
+    .sidebar-nav-item:hover, .sidebar-nav-item.active {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--color-primary);
+    }
+    @media (max-width: 991px) {
+      .dashboard-sidebar {
+        left: -280px;
+      }
+      .dashboard-main {
+        margin-left: 0;
+      }
+      .sidebar-toggle {
+        left: var(--space-md);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container-fluid px-4">
+      <div class="row align-items-center w-100">
+        <div class="col-6 col-lg-3">
+          <a href="index.html" class="navbar-brand" data-testid="navbar-brand">E-SPORTS <span>ARENA</span></a>
+        </div>
+        <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center gap-3">
+          <div class="d-flex align-items-center gap-2">
+            <button class="theme-toggle" data-testid="theme-toggle" aria-label="Toggle theme"></button>
+            <button class="rtl-toggle" data-testid="rtl-toggle">RTL</button>
+            <a href="index.html" class="btn-ghost" data-testid="logout-btn" style="padding: 0.5rem 1rem;">
+              <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <button class="sidebar-toggle" data-testid="sidebar-toggle" aria-label="Toggle sidebar">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="dashboard-wrapper">
+    <aside class="dashboard-sidebar" data-testid="dashboard-sidebar">
+      <h5 style="font-family: var(--font-heading); margin-bottom: var(--space-xl); color: var(--color-text);">DASHBOARD</h5>
+      
+      <nav>
+        <a href="dashboard.html" class="sidebar-nav-item active" data-testid="nav-overview">
+          <i class="fas fa-th-large"></i>
+          <span>Overview</span>
+        </a>
+        <a href="dashboard-match.html" class="sidebar-nav-item" data-testid="nav-Match">
+          <i class="fas fa-gamepad"></i>
+          <span>Match</span>
+        </a>
+        <a href="dashboard-players.html" class="sidebar-nav-item" data-testid="nav-players">
+          <i class="fas fa-users"></i>
+          <span>Players</span>
+        </a>
+        <a href="dashboard-league.html" class="sidebar-nav-item" data-testid="nav-League">
+          <i class="fas fa-trophy"></i>
+          <span>League</span>
+        </a>
+        <a href="dashboard-notifications.html" class="sidebar-nav-item" data-testid="nav-notifications">
+          <i class="fas fa-bell"></i>
+          <span>Notifications</span>
+          <span class="badge badge-accent" style="margin-left: auto; font-size: 0.7rem;">5</span>
+        </a>
+        <a href="dashboard-settings.html" class="sidebar-nav-item" data-testid="nav-settings">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main" data-testid="dashboard-main">
+      <div class="mb-5">
+        <h1 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.5rem;">Dashboard Overview</h1>
+        <p style="color: var(--color-text-muted);">Welcome back, Admin! Here's what's happening.</p>
+      </div>
+
+      <div class="row g-4 mb-5" data-dashboard-stats>
+        <div class="col-sm-6 col-xl-3">
+          <div class="card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Total Match</p>
+                <h2 style="font-size: 2rem; font-weight: 900; margin: 0;" data-stat="total-Match">248</h2>
+              </div>
+              <i class="fas fa-gamepad" style="font-size: 2.5rem; color: var(--color-primary); opacity: 0.5;"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <div class="card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Active Players</p>
+                <h2 style="font-size: 2rem; font-weight: 900; margin: 0;" data-stat="active-players">1,542</h2>
+              </div>
+              <i class="fas fa-users" style="font-size: 2.5rem; color: var(--color-secondary); opacity: 0.5;"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <div class="card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Live Streams</p>
+                <h2 style="font-size: 2rem; font-weight: 900; margin: 0;" data-stat="live-streams">12</h2>
+              </div>
+              <i class="fas fa-video" style="font-size: 2.5rem; color: var(--color-accent); opacity: 0.5;"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <div class="card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Total Revenue</p>
+                <h2 style="font-size: 2rem; font-weight: 900; margin: 0;" data-stat="total-revenue">$125K</h2>
+              </div>
+              <i class="fas fa-dollar-sign" style="font-size: 2.5rem; color: var(--color-primary); opacity: 0.5;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin: 0;">Recent Match</h3>
+              <a href="Match.html" class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.85rem;" data-testid="view-all-Match">View All</a>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Match</th>
+                    <th>Game</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody data-Match-table>
+                  <!-- Populated by dashboard.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card">
+            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-lg);">Notifications</h3>
+            <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+              <div style="padding: var(--space-md); background: rgba(139, 92, 246, 0.05); border-left: 3px solid var(--color-primary); border-radius: var(--radius-sm);" data-testid="notification-1">
+                <p style="font-weight: 600; margin-bottom: 0.25rem; font-size: 0.9rem;">New Tournament Created</p>
+                <p style="color: var(--color-text-muted); font-size: 0.85rem; margin: 0;">Valorant Champions League starts Feb 25</p>
+              </div>
+              <div style="padding: var(--space-md); background: rgba(6, 182, 212, 0.05); border-left: 3px solid var(--color-secondary); border-radius: var(--radius-sm);" data-testid="notification-2">
+                <p style="font-weight: 600; margin-bottom: 0.25rem; font-size: 0.9rem;">5 New Player Registrations</p>
+                <p style="color: var(--color-text-muted); font-size: 0.85rem; margin: 0;">Review pending applications</p>
+              </div>
+              <div style="padding: var(--space-md); background: rgba(236, 72, 153, 0.05); border-left: 3px solid var(--color-accent); border-radius: var(--radius-sm);" data-testid="notification-3">
+                <p style="font-weight: 600; margin-bottom: 0.25rem; font-size: 0.9rem;">Match Dispute Reported</p>
+                <p style="color: var(--color-text-muted); font-size: 0.85rem; margin: 0;">Match #142 requires admin review</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-4">
+        <div class="col-12">
+          <div class="card">
+            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-lg);">Top Players</h3>
+            <div class="row g-4" data-players-cards>
+              <!-- Populated by dashboard.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/main.js" defer></script>
+  <script src="./assets/js/dashboard.js" defer></script>
+</body>
+</html>
