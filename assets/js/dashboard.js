@@ -6,26 +6,40 @@
 // ==================== SIDEBAR TOGGLE ====================
 function initDashboardSidebar() {
   const sidebarToggle = document.querySelector('[data-testid="sidebar-toggle"]');
-  const sidebar = document.querySelector('[data-testid="dashboard-sidebar"]');
-  const mainContent = document.querySelector('[data-testid="dashboard-main"]');
-  
-  if (sidebarToggle && sidebar && mainContent) {
-    sidebarToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-      mainContent.classList.toggle('expanded');
-      
-      // Save state
-      const isCollapsed = sidebar.classList.contains('collapsed');
-      localStorage.setItem('sidebarCollapsed', isCollapsed);
-    });
+    const sidebar = document.querySelector('.dashboard-sidebar');
+    const toggle = sidebarToggle; // Use the toggle element we found
+    const main = document.querySelector('.dashboard-main');
     
-    // Load saved state
+    if (toggle && sidebar && main) {
+      toggle.addEventListener('click', () => {
+        if (window.innerWidth <= 991) {
+             sidebar.classList.toggle('active');
+        } else {
+             sidebar.classList.toggle('collapsed');
+             main.classList.toggle('expanded');
+        }
+        // Save state for desktop view
+        const isCollapsed = sidebar.classList.contains('collapsed');
+        localStorage.setItem('sidebarCollapsed', isCollapsed);
+      });
+      
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 991 && 
+            sidebar.classList.contains('active') && 
+            !sidebar.contains(e.target) && 
+            !toggle.contains(e.target)) {
+          sidebar.classList.remove('active');
+        }
+      });
+    }
+    
+    // Load saved state (only applies to desktop collapsed state)
     const savedState = localStorage.getItem('sidebarCollapsed');
     if (savedState === 'true') {
       sidebar.classList.add('collapsed');
-      mainContent.classList.add('expanded');
+      if (main) main.classList.add('expanded');
     }
-  }
 }
 
 // ==================== DASHBOARD STATS ====================

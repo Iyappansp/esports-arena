@@ -70,6 +70,15 @@ function initNavbar() {
       navbarMenu.classList.toggle('active');
     });
     
+    // Close menu button
+    const closeBtn = navbarMenu.querySelector('.mobile-menu-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        navbarToggler.classList.remove('active');
+        navbarMenu.classList.remove('active');
+      });
+    }
+    
     // Close menu on link click
     navLinks.forEach(link => {
       link.addEventListener('click', () => {

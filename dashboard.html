@@ -17,48 +17,51 @@
     .dashboard-wrapper {
       display: flex;
       min-height: 100vh;
-      padding-top: 90px;
+      padding-top: 70px; /* Reduced from 90px */
     }
     .dashboard-sidebar {
       position: fixed;
-      top: 70px;
+      top: 60px; /* Matches navbar height more closely */
       left: 0;
-      width: 280px;
-      height: calc(100vh - 70px);
+      width: 260px; /* Slightly narrower */
+      height: calc(100vh - 60px);
       background: var(--color-card);
       border-right: 1px solid var(--color-border);
-      padding: var(--space-xl);
+      padding: var(--space-lg);
       overflow-y: auto;
-      transition: left 0.3s ease;
+      transition: transform 0.3s ease;
       z-index: 999;
+      transform: translateX(0);
     }
     .dashboard-sidebar.collapsed {
-      left: -280px;
+      transform: translateX(-100%);
     }
     .dashboard-main {
       flex: 1;
-      margin-left: 280px;
-      padding: var(--space-xl);
+      margin-left: 260px;
+      padding: var(--space-lg); /* Reduced padding */
       transition: margin-left 0.3s ease;
+      width: 100%; /* Ensure full width */
     }
     .dashboard-main.expanded {
       margin-left: 0;
     }
     .sidebar-toggle {
       position: fixed;
-      top: 85px;
-      left: var(--space-lg);
-      z-index: 1000;
+      top: 75px;
+      left: var(--space-md);
+      z-index: 998;
       background: var(--color-card);
       border: 1px solid var(--color-border);
-      width: 44px;
-      height: 44px;
+      width: 36px; /* Smaller button */
+      height: 36px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
     }
     .sidebar-toggle:hover {
       background: var(--color-elevated);
@@ -68,26 +71,48 @@
       display: flex;
       align-items: center;
       gap: var(--space-md);
-      padding: var(--space-md);
+      padding: 0.75rem var(--space-md);
       color: var(--color-text-muted);
       text-decoration: none;
       border-radius: var(--radius-md);
       transition: all 0.3s ease;
-      margin-bottom: var(--space-sm);
+      margin-bottom: 2px;
+      font-size: 0.95rem;
     }
     .sidebar-nav-item:hover, .sidebar-nav-item.active {
       background: rgba(139, 92, 246, 0.1);
       color: var(--color-primary);
     }
+    
+    /* Mobile Specific Optimizations */
     @media (max-width: 991px) {
       .dashboard-sidebar {
-        left: -280px;
+        transform: translateX(-100%);
+        top: 60px;
+        height: calc(100vh - 60px);
+      }
+      .dashboard-sidebar.active {
+        transform: translateX(0);
       }
       .dashboard-main {
         margin-left: 0;
+        padding: 0.5rem; /* Even less padding on mobile */
       }
       .sidebar-toggle {
+        top: 80px;
         left: var(--space-md);
+      }
+      .navbar-brand {
+        font-size: 0.75rem !important; /* Smaller logo */
+      }
+      /* Adjust right side controls spacing */
+      .navbar .gap-2 {
+        gap: 0.25rem !important; /* Tighter gap */
+        margin-right: -10px; /* Pull slightly right */
+      }
+      .navbar .px-4 {
+         padding-left: 1rem !important;
+         padding-right: 1rem !important;
       }
     }
   </style>
@@ -98,16 +123,48 @@
     <div class="container-fluid px-4">
       <div class="row align-items-center w-100">
         <div class="col-6 col-lg-3">
-          <a href="index.html" class="navbar-brand" data-testid="navbar-brand">E-SPORTS <span>ARENA</span></a>
+          <a href="index.html" class="navbar-brand" data-testid="navbar-brand">
+            <img src="assets/logo.png" alt="E-Sports Arena" class="navbar-logo">
+          </a>
         </div>
         <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center gap-3">
+          <!-- Mobile Menu -->
+          <div class="navbar-menu d-lg-flex align-items-center gap-4" data-testid="navbar-menu">
+            <!-- Mobile Menu Header -->
+            <div class="mobile-menu-header d-lg-none">
+              <img src="assets/logo.png" alt="E-Sports Arena" class="mobile-menu-logo">
+              <button class="mobile-menu-close" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="league.html" class="nav-link">League</a>
+            <a href="match.html" class="nav-link">Match</a>
+            <a href="team.html" class="nav-link">Team</a>
+            
+            <!-- Mobile Only Links -->
+            <div class="d-lg-none mt-4 pt-4 border-top border-secondary">
+              <a href="index.html" class="btn-primary w-100" data-testid="mobile-logout-btn">
+                <i class="fas fa-sign-out-alt me-2"></i>Logout
+              </a>
+            </div>
+          </div>
+
           <div class="d-flex align-items-center gap-2">
             <button class="theme-toggle" data-testid="theme-toggle" aria-label="Toggle theme"></button>
             <button class="rtl-toggle" data-testid="rtl-toggle">RTL</button>
-            <a href="index.html" class="btn-ghost" data-testid="logout-btn" style="padding: 0.5rem 1rem;">
+            <a href="index.html" class="btn-ghost d-none d-lg-inline-block" data-testid="logout-btn" style="padding: 0.5rem 1rem;">
               <i class="fas fa-sign-out-alt me-2"></i>Logout
             </a>
           </div>
+
+          <!-- Mobile Menu Toggle -->
+          <button class="navbar-toggler d-lg-none" data-testid="navbar-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </div>

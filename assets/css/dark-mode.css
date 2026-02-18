@@ -160,3 +160,51 @@ body.light-mode .rtl-toggle {
 body.light-mode .rtl-toggle:hover {
   background: rgba(15, 23, 42, 0.08);
 }
+
+/* Light Mode Mobile Menu */
+@media (max-width: 991px) {
+  body.light-mode .navbar-menu {
+    background: rgba(248, 250, 252, 0.98);
+    border-right: 1px solid var(--color-border);
+  }
+  
+  body.light-mode .navbar-toggler span {
+    background-color: var(--color-text); /* Should be dark via variable */
+  }
+}
+
+/* Enhanced Toggle Icons for visibility */
+.theme-toggle::after {
+  content: '\f185'; /* Sun icon */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #F59E0B;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body.light-mode .theme-toggle::after {
+  opacity: 1;
+}
+
+.theme-toggle::before {
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Moon icon for dark mode */
+.theme-toggle {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F1F5F9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: 6px center;
+}
+
+body.light-mode .theme-toggle {
+    background-image: none;
+}

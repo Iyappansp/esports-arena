@@ -32,22 +32,38 @@
       <div class="row align-items-center">
         <div class="col-6 col-lg-3">
           <a href="index.html" class="navbar-brand" data-testid="navbar-brand">
-            E-SPORTS <span>ARENA</span>
+            <img src="assets/logo.png" alt="E-Sports Arena" class="navbar-logo">
           </a>
         </div>
         
         <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center gap-3">
-          <!-- Desktop Menu -->
-          <div class="d-none d-lg-flex align-items-center gap-4" data-testid="navbar-menu">
+          <!-- Mobile Menu -->
+          <div class="navbar-menu d-lg-flex align-items-center gap-4" data-testid="navbar-menu">
+            <!-- Mobile Menu Header -->
+            <div class="mobile-menu-header d-lg-none">
+              <img src="assets/logo.png" alt="E-Sports Arena" class="mobile-menu-logo">
+              <button class="mobile-menu-close" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
             <a href="index.html" class="nav-link">Home</a>
             <a href="home-2.html" class="nav-link">Home 2</a>
             <a href="league.html" class="nav-link">League</a>
             <a href="match.html" class="nav-link">Match</a>
             <a href="team.html" class="nav-link">Team</a>
-
             <a href="gallery.html" class="nav-link">Gallery</a>
             <a href="community.html" class="nav-link">Community</a>
             <a href="contact.html" class="nav-link">Contact</a>
+            
+            <!-- Mobile Only Links -->
+            <div class="d-lg-none mt-4 pt-4 border-top border-secondary">
+              <a href="dashboard.html" class="btn-primary w-100 mb-3" style="background: transparent; border: 1px solid var(--color-primary);">Dashboard</a>
+              <a href="login.html" class="btn-primary w-100 mb-3">Login</a>
+              <a href="index.html" class="btn-ghost w-100" data-testid="mobile-logout-btn">
+                <i class="fas fa-sign-out-alt me-2"></i>Logout
+              </a>
+            </div>
           </div>
           
           <!-- Theme & RTL Toggles -->
@@ -461,7 +477,7 @@
     <div class="container-custom">
       <div class="row g-4">
         <div class="col-lg-4">
-          <h3 class="text-gradient mb-4">E-SPORTS ARENA</h3>
+          <img src="assets/logo.png" alt="E-Sports Arena" class="footer-logo">
           <p style="color: var(--color-text-muted); margin-bottom: var(--space-lg);">
             The premier multi-game esports platform connecting players, teams, and fans across Valorant, CS2, League of Legends, and Apex Legends.
           </p>

@@ -373,26 +373,50 @@ a:hover {
 /* ... (previous navbar code) ... */
 
 .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  height: 60px; /* Increased from 40px */
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-normal);
+}
+
+.navbar-brand:hover .navbar-logo {
+  transform: scale(1.05);
+}
+
+.navbar-brand span {
   font-family: var(--font-heading);
-  font-size: 1.0rem;
+  font-size: 1.1rem;
   font-weight: 900;
   color: var(--color-text);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-}
-
-.navbar-brand span {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+@media (max-width: 991px) {
+  .navbar-logo {
+    height: 45px; /* Increased from 32px */
+  }
+}
+
 .nav-link {
   color: var(--color-text-muted);
-  font-weight: 500;
-  font-size: 0.85rem; /* Reduced font size to fit more items */
-  padding: 0.5rem 0.5rem; /* Reduced padding to fit more items */
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.5rem;
   position: relative;
   transition: color var(--transition-fast);
   white-space: nowrap;
@@ -427,7 +451,57 @@ a:hover {
   min-width: auto;
 }
 
-/* ... (mobile menu toggle) ... */
+/* Mobile Menu Toggle */
+.navbar-toggler {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  padding: 0;
+  z-index: 2001;
+  position: relative;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.navbar-toggler:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: var(--color-primary);
+}
+
+.navbar-toggler span {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  position: absolute;
+}
+
+.navbar-toggler span:nth-child(1) { top: 13px; }
+.navbar-toggler span:nth-child(2) { top: 19px; }
+.navbar-toggler span:nth-child(3) { top: 25px; }
+
+.navbar-toggler.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 19px;
+}
+
+.navbar-toggler.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.navbar-toggler.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 19px;
+}
 
 /* =====================================================
    HERO SECTION
@@ -455,7 +529,7 @@ a:hover {
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem); /* Reduced max size */
+  font-size: clamp(2rem, 6vw, 4.5rem); /* Reduced max size */
   font-weight: 900;
   line-height: 1.1;
   margin-bottom: var(--space-lg);
@@ -654,6 +728,13 @@ textarea.form-control {
   margin-top: var(--space-3xl);
 }
 
+.footer-logo {
+  height: 70px; /* Increased from 50px */
+  width: auto;
+  margin-bottom: var(--space-lg);
+  object-fit: contain;
+}
+
 .footer-bottom {
   padding-top: var(--space-xl);
   border-top: 1px solid var(--color-divider);
@@ -669,20 +750,38 @@ textarea.form-control {
 @media (max-width: 991px) {
   .navbar-toggler {
     display: flex;
+    margin-left: 0.5rem;
+  }
+  
+  /* Pull navbar contents closer to right edge on mobile */
+  .navbar .col-6.col-lg-9 {
+    padding-right: 15px; 
+    flex: 0 0 70%;
+    max-width: 70%;
+  }
+
+  .navbar .col-6.col-lg-3 {
+    flex: 0 0 30%;
+    max-width: 30%;
   }
   
   .navbar-menu {
     position: fixed;
-    top: 70px;
+    top: 0;
     left: -100%;
-    width: 280px;
-    height: calc(100vh - 70px);
+    width: 300px;
+    height: 100vh;
     background: rgba(11, 15, 26, 0.98);
-    backdrop-filter: blur(16px);
-    border-right: 1px solid var(--color-border);
-    padding: var(--space-xl);
-    transition: left var(--transition-normal);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--color-primary);
+    padding: var(--space-2xl) var(--space-xl);
+    transition: left var(--transition-slow) cubic-bezier(0.77,0.2,0.05,1.0), background-color var(--transition-normal);
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 2000;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
   }
   
   .navbar-menu.active {
@@ -691,8 +790,45 @@ textarea.form-control {
   
   .nav-link {
     display: block;
-    padding: var(--space-md) 0;
+    padding: 1rem 1.5rem; /* More padding for touch targets */
     border-bottom: 1px solid var(--color-divider);
+    width: 100%;
+    color: var(--color-text); /* Use brighter text color by default */
+    font-size: 1rem; /* Larger font for mobile */
+    border-radius: var(--radius-md);
+  }
+  
+  .nav-link:hover, .nav-link.active {
+    background: rgba(255, 255, 255, 0.05); /* Subtle hover effect */
+    color: var(--color-primary);
+    padding-left: 2rem; /* Slide effect */
+  }
+
+  .navbar-brand {
+    font-size: 0.9rem;
+  }
+
+  /* Mobile menu header */
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .mobile-menu-logo {
+    height: 40px;
+    width: auto;
+  }
+
+  .mobile-menu-close {
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 }
 
