@@ -139,3 +139,23 @@
     text-align: center;
   }
 }
+
+/* RTL Perfections */
+[dir="rtl"] .me-1 { margin-left: 0.25rem !important; margin-right: 0 !important; }
+[dir="rtl"] .me-2 { margin-left: 0.5rem !important; margin-right: 0 !important; }
+[dir="rtl"] .me-3 { margin-left: 1rem !important; margin-right: 0 !important; }
+[dir="rtl"] .ms-1 { margin-right: 0.25rem !important; margin-left: 0 !important; }
+[dir="rtl"] .ms-2 { margin-right: 0.5rem !important; margin-left: 0 !important; }
+[dir="rtl"] .ms-3 { margin-right: 1rem !important; margin-left: 0 !important; }
+
+[dir="rtl"] .fa-chevron-right,
+[dir="rtl"] .fa-arrow-right,
+[dir="rtl"] .fa-sign-in-alt,
+[dir="rtl"] .fa-paper-plane {
+    transform: scaleX(-1);
+}
+
+[dir="rtl"] .navbar-brand {
+    margin-right: 0;
+    margin-left: 1rem;
+}
