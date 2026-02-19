@@ -13,109 +13,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/dark-mode.css">
   <link rel="stylesheet" href="./assets/css/rtl.css">
-  <style>
-    .dashboard-wrapper {
-      display: flex;
-      min-height: 100vh;
-      padding-top: 70px; /* Reduced from 90px */
-    }
-    .dashboard-sidebar {
-      position: fixed;
-      top: 60px; /* Matches navbar height more closely */
-      left: 0;
-      width: 260px; /* Slightly narrower */
-      height: calc(100vh - 60px);
-      background: var(--color-card);
-      border-right: 1px solid var(--color-border);
-      padding: var(--space-lg);
-      overflow-y: auto;
-      transition: transform 0.3s ease;
-      z-index: 999;
-      transform: translateX(0);
-    }
-    .dashboard-sidebar.collapsed {
-      transform: translateX(-100%);
-    }
-    .dashboard-main {
-      flex: 1;
-      margin-left: 260px;
-      padding: var(--space-lg); /* Reduced padding */
-      transition: margin-left 0.3s ease;
-      width: 100%; /* Ensure full width */
-    }
-    .dashboard-main.expanded {
-      margin-left: 0;
-    }
-    .sidebar-toggle {
-      position: fixed;
-      top: 75px;
-      left: var(--space-md);
-      z-index: 998;
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      width: 36px; /* Smaller button */
-      height: 36px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-sm);
-    }
-    .sidebar-toggle:hover {
-      background: var(--color-elevated);
-      border-color: var(--color-primary);
-    }
-    .sidebar-nav-item {
-      display: flex;
-      align-items: center;
-      gap: var(--space-md);
-      padding: 0.75rem var(--space-md);
-      color: var(--color-text-muted);
-      text-decoration: none;
-      border-radius: var(--radius-md);
-      transition: all 0.3s ease;
-      margin-bottom: 2px;
-      font-size: 0.95rem;
-    }
-    .sidebar-nav-item:hover, .sidebar-nav-item.active {
-      background: rgba(139, 92, 246, 0.1);
-      color: var(--color-primary);
-    }
-    
-    /* Mobile Specific Optimizations */
-    @media (max-width: 991px) {
-      .dashboard-sidebar {
-        transform: translateX(-100%);
-        top: 60px;
-        height: calc(100vh - 60px);
-      }
-      .dashboard-sidebar.active {
-        transform: translateX(0);
-      }
-      .dashboard-main {
-        margin-left: 0;
-        padding: 0.5rem; /* Even less padding on mobile */
-      }
-      .sidebar-toggle {
-        top: 80px;
-        left: var(--space-md);
-      }
-      .navbar-brand {
-        font-size: 0.75rem !important; /* Smaller logo */
-      }
-      /* Adjust right side controls spacing */
-      .navbar .gap-2 {
-        gap: 0.25rem !important; /* Tighter gap */
-        margin-right: -10px; /* Pull slightly right */
-      }
-      .navbar .px-4 {
-         padding-left: 1rem !important;
-         padding-right: 1rem !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./assets/css/dashboard.css">
 </head>
 <body>
 
@@ -143,12 +41,7 @@
             <a href="match.html" class="nav-link">Match</a>
             <a href="team.html" class="nav-link">Team</a>
             
-            <!-- Mobile Only Links -->
-            <div class="d-lg-none mt-4 pt-4 border-top border-secondary">
-              <a href="index.html" class="btn-primary w-100" data-testid="mobile-logout-btn">
-                <i class="fas fa-sign-out-alt me-2"></i>Logout
-              </a>
-            </div>
+            <!-- Mobile Only Links removed -->
           </div>
 
           <div class="d-flex align-items-center gap-2">
@@ -205,6 +98,13 @@
           <span>Settings</span>
         </a>
       </nav>
+
+      <div class="sidebar-logout">
+        <a href="index.html" class="sidebar-nav-item" style="color: var(--color-accent); border-radius: var(--radius-md);">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </div>
     </aside>
 
     <main class="dashboard-main" data-testid="dashboard-main">

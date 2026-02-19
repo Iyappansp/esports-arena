@@ -6,40 +6,60 @@
 // ==================== SIDEBAR TOGGLE ====================
 function initDashboardSidebar() {
   const sidebarToggle = document.querySelector('[data-testid="sidebar-toggle"]');
-    const sidebar = document.querySelector('.dashboard-sidebar');
-    const toggle = sidebarToggle; // Use the toggle element we found
-    const main = document.querySelector('.dashboard-main');
+  const sidebar = document.querySelector('.dashboard-sidebar');
+  const main = document.querySelector('.dashboard-main');
+  
+  // Create overlay if it doesn't exist
+  let overlay = document.querySelector('.sidebar-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+  }
     
-    if (toggle && sidebar && main) {
-      toggle.addEventListener('click', () => {
-        if (window.innerWidth <= 991) {
-             sidebar.classList.toggle('active');
-        } else {
-             sidebar.classList.toggle('collapsed');
-             main.classList.toggle('expanded');
-        }
-        // Save state for desktop view
-        const isCollapsed = sidebar.classList.contains('collapsed');
-        localStorage.setItem('sidebarCollapsed', isCollapsed);
-      });
+  if (sidebarToggle && sidebar && main) {
+    sidebarToggle.addEventListener('click', () => {
+      if (window.innerWidth <= 991) {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+        // Prevent body scroll when sidebar is open on mobile
+        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+      } else {
+        sidebar.classList.toggle('collapsed');
+        main.classList.toggle('expanded');
+      }
       
-      // Close sidebar when clicking outside on mobile
-      document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 991 && 
-            sidebar.classList.contains('active') && 
-            !sidebar.contains(e.target) && 
-            !toggle.contains(e.target)) {
-          sidebar.classList.remove('active');
-        }
-      });
-    }
+      // Save state for desktop view
+      const isCollapsed = sidebar.classList.contains('collapsed');
+      localStorage.setItem('sidebarCollapsed', isCollapsed);
+    });
     
-    // Load saved state (only applies to desktop collapsed state)
-    const savedState = localStorage.getItem('sidebarCollapsed');
-    if (savedState === 'true') {
-      sidebar.classList.add('collapsed');
-      if (main) main.classList.add('expanded');
-    }
+    // Close sidebar when clicking overlay
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 991 && 
+          sidebar.classList.contains('active') && 
+          !sidebar.contains(e.target) && 
+          !sidebarToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+  
+  // Load saved state (only applies to desktop collapsed state)
+  const savedState = localStorage.getItem('sidebarCollapsed');
+  if (savedState === 'true' && window.innerWidth > 991) {
+    sidebar.classList.add('collapsed');
+    if (main) main.classList.add('expanded');
+  }
 }
 
 // ==================== DASHBOARD STATS ====================
@@ -151,13 +171,13 @@ function renderMatchTable() {
   
   tableBody.innerHTML = MatchData.map(match => `
     <tr>
-      <td style="font-weight: 600; color: var(--color-text);">#${match.id}</td>
-      <td>${match.team1} vs ${match.team2}</td>
-      <td><span class="badge badge-secondary">${match.game}</span></td>
-      <td>${match.date}</td>
-      <td>${match.time}</td>
-      <td><span class="badge ${match.status === 'Upcoming' ? 'badge-primary' : 'badge-success'}">${match.status}</span></td>
-      <td>
+      <td data-label="ID" style="font-weight: 600; color: var(--color-text);">#${match.id}</td>
+      <td data-label="Match">${match.team1} vs ${match.team2}</td>
+      <td data-label="Game"><span class="badge badge-secondary">${match.game}</span></td>
+      <td data-label="Date">${match.date}</td>
+      <td data-label="Time">${match.time}</td>
+      <td data-label="Status"><span class="badge ${match.status === 'Upcoming' ? 'badge-primary' : 'badge-success'}">${match.status}</span></td>
+      <td data-label="Action">
         <button class="btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.8rem;" data-testid="view-match-${match.id}">View</button>
       </td>
     </tr>

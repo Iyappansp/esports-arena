@@ -13,84 +13,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/dark-mode.css">
   <link rel="stylesheet" href="./assets/css/rtl.css">
-  <style>
-    .dashboard-wrapper {
-      display: flex;
-      min-height: 100vh;
-      padding-top: 90px;
-    }
-    .dashboard-sidebar {
-      position: fixed;
-      top: 70px;
-      left: 0;
-      width: 280px;
-      height: calc(100vh - 70px);
-      background: var(--color-card);
-      border-right: 1px solid var(--color-border);
-      padding: var(--space-xl);
-      overflow-y: auto;
-      transition: left 0.3s ease;
-      z-index: 999;
-    }
-    .dashboard-sidebar.collapsed {
-      left: -280px;
-    }
-    .dashboard-main {
-      flex: 1;
-      margin-left: 280px;
-      padding: var(--space-xl);
-      transition: margin-left 0.3s ease;
-    }
-    .dashboard-main.expanded {
-      margin-left: 0;
-    }
-    .sidebar-toggle {
-      position: fixed;
-      top: 85px;
-      left: var(--space-lg);
-      z-index: 1000;
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .sidebar-toggle:hover {
-      background: var(--color-elevated);
-      border-color: var(--color-primary);
-    }
-    .sidebar-nav-item {
-      display: flex;
-      align-items: center;
-      gap: var(--space-md);
-      padding: var(--space-md);
-      color: var(--color-text-muted);
-      text-decoration: none;
-      border-radius: var(--radius-md);
-      transition: all 0.3s ease;
-      margin-bottom: var(--space-sm);
-    }
-    .sidebar-nav-item:hover, .sidebar-nav-item.active {
-      background: rgba(139, 92, 246, 0.1);
-      color: var(--color-primary);
-    }
-    @media (max-width: 991px) {
-      .dashboard-sidebar {
-        left: -280px;
-      }
-      .dashboard-main {
-        margin-left: 0;
-      }
-      .sidebar-toggle {
-        left: var(--space-md);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./assets/css/dashboard.css">
 </head>
 <body>
 
@@ -118,12 +41,7 @@
             <a href="match.html" class="nav-link">Match</a>
             <a href="team.html" class="nav-link">Team</a>
             
-            <!-- Mobile Only Links -->
-            <div class="d-lg-none mt-4 pt-4 border-top border-secondary">
-              <a href="index.html" class="btn-primary w-100" data-testid="mobile-logout-btn">
-                <i class="fas fa-sign-out-alt me-2"></i>Logout
-              </a>
-            </div>
+            <!-- Mobile Only Links removed -->
           </div>
 
           <div class="d-flex align-items-center gap-2">
@@ -180,6 +98,13 @@
           <span>Settings</span>
         </a>
       </nav>
+
+      <div class="sidebar-logout">
+        <a href="index.html" class="sidebar-nav-item" style="color: var(--color-accent); border-radius: var(--radius-md);">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </div>
     </aside>
 
     <main class="dashboard-main" data-testid="dashboard-main">
@@ -208,25 +133,25 @@
             </thead>
             <tbody>
               <tr>
-                <td style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Cyber Wolves</td>
-                <td><span class="badge badge-secondary">Valorant</span></td>
-                <td>Feb 15, 2026</td>
-                <td>18:00 UTC</td>
-                <td>Champions League</td>
-                <td><span class="badge badge-primary">Upcoming</span></td>
-                <td>
+                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Cyber Wolves</td>
+                <td data-label="Game"><span class="badge badge-secondary">Valorant</span></td>
+                <td data-label="Date">Feb 15, 2026</td>
+                <td data-label="Time">18:00 UTC</td>
+                <td data-label="Tournament">Champions League</td>
+                <td data-label="Status"><span class="badge badge-primary">Upcoming</span></td>
+                <td data-label="Action">
                   <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;"><i class="fas fa-edit"></i></button>
                   <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem; border-color: var(--color-accent); color: var(--color-accent);"><i class="fas fa-trash"></i></button>
                 </td>
               </tr>
               <tr>
-                <td style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Digital Titans</td>
-                <td><span class="badge badge-secondary">CS2</span></td>
-                <td>Feb 16, 2026</td>
-                <td>20:00 UTC</td>
-                <td>Pro Circuit</td>
-                <td><span class="badge badge-primary">Upcoming</span></td>
-                <td>
+                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Digital Titans</td>
+                <td data-label="Game"><span class="badge badge-secondary">CS2</span></td>
+                <td data-label="Date">Feb 16, 2026</td>
+                <td data-label="Time">20:00 UTC</td>
+                <td data-label="Tournament">Pro Circuit</td>
+                <td data-label="Status"><span class="badge badge-primary">Upcoming</span></td>
+                <td data-label="Action">
                   <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;"><i class="fas fa-edit"></i></button>
                   <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem; border-color: var(--color-accent); color: var(--color-accent);"><i class="fas fa-trash"></i></button>
                 </td>
@@ -257,20 +182,20 @@
             </thead>
             <tbody>
               <tr>
-                <td style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Elite Force</td>
-                <td><span class="badge badge-secondary">Valorant</span></td>
-                <td>Feb 12, 2026</td>
-                <td style="color: var(--color-primary);">13-8</td>
-                <td style="color: var(--color-text);">Phoenix Rising</td>
-                <td><button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;">Details</button></td>
+                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Elite Force</td>
+                <td data-label="Game"><span class="badge badge-secondary">Valorant</span></td>
+                <td data-label="Date">Feb 12, 2026</td>
+                <td data-label="Score" style="color: var(--color-primary);">13-8</td>
+                <td data-label="Winner" style="color: var(--color-text);">Phoenix Rising</td>
+                <td data-label="Action"><button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;">Details</button></td>
               </tr>
                <tr>
-                <td style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Cyber Wolves</td>
-                <td><span class="badge badge-secondary">CS2</span></td>
-                <td>Feb 11, 2026</td>
-                <td style="color: var(--color-primary);">16-12</td>
-                <td style="color: var(--color-text);">Storm Raiders</td>
-                <td><button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;">Details</button></td>
+                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Cyber Wolves</td>
+                <td data-label="Game"><span class="badge badge-secondary">CS2</span></td>
+                <td data-label="Date">Feb 11, 2026</td>
+                <td data-label="Score" style="color: var(--color-primary);">16-12</td>
+                <td data-label="Winner" style="color: var(--color-text);">Storm Raiders</td>
+                <td data-label="Action"><button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;">Details</button></td>
               </tr>
             </tbody>
           </table>
