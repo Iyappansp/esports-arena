@@ -94,6 +94,41 @@ body {
   position: relative;
 }
 
+/* Background for Hero Section */
+.hero-section {
+  background-image: 
+    linear-gradient(rgba(11, 15, 26, 0.3), rgba(11, 15, 26, 0.3)), 
+    url('../image1.png');
+  background-position: center;
+  background-size: 115%; /* Slight zoom from 100% cover */
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* 
+   FIX: Visibility in Light Mode
+   Since the hero background is ALWAYS dark, these buttons must ALWAYS be light.
+*/
+.hero-section .btn-secondary,
+.hero-section .btn-ghost {
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.hero-section .btn-ghost {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.hero-section .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: #FFFFFF !important;
+}
+
+.hero-section .btn-secondary:hover {
+  border-color: var(--color-primary) !important;
+  background: rgba(255, 255, 255, 0.05);
+}
+
 /* Animated Grid Background */
 body::before {
   content: '';
@@ -426,6 +461,27 @@ a:hover {
   white-space: nowrap;
 }
 
+@media (max-width: 1200px) and (min-width: 992px) {
+  .nav-link {
+    font-size: 0.65rem;
+    padding: 0.5rem 0.15rem;
+  }
+  .navbar-menu {
+    gap: 0.25rem !important; /* even tighter */
+  }
+  .navbar .btn-primary {
+    padding: 0.4rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+  .navbar .theme-toggle, .navbar .rtl-toggle {
+    padding: 0.4rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+  .navbar .container-custom {
+    padding: 0 var(--space-sm);
+  }
+}
+
 .nav-link::after {
   content: '';
   position: absolute;
@@ -543,7 +599,7 @@ a:hover {
 
 .hero-subtitle {
   font-size: clamp(1rem, 1.5vw, 1.25rem); /* Reduced */
-  color: var(--color-text-muted);
+  color: #FFFFFF; /* Forced white for visibility on dark hero image */
   margin-bottom: var(--space-2xl);
   animation: fadeInUp 1s ease;
 }

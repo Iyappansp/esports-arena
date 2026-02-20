@@ -11,7 +11,7 @@
 .dashboard-wrapper {
   display: flex;
   min-height: 100vh;
-  padding-top: 90px;
+  padding-top: 130px; /* Increased for top space */
 }
 
 .dashboard-sidebar {
@@ -140,8 +140,18 @@
     flex: 0 0 auto;
     width: auto;
   }
+}
 
-  /* ... */
+@media (max-width: 1200px) {
+  .dashboard-sidebar {
+    width: 240px;
+  }
+  .dashboard-main {
+    margin-left: 240px;
+  }
+}
+
+@media (max-width: 991px) {
   .table thead {
     display: none; /* Hide headers on very small screens or use custom responsive table styles */
   }
