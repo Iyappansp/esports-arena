@@ -1,6 +1,12 @@
-/* =====================================================
-   DASHBOARD SPECIFIC STYLES
-   ===================================================== */
+.dashboard-sidebar h5 {
+  padding-left: 1.5rem;
+  margin-bottom: var(--space-xl);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted) !important;
+  text-transform: uppercase;
+}
 
 .sidebar-logout {
   margin-top: auto;
@@ -11,21 +17,38 @@
 .dashboard-wrapper {
   display: flex;
   min-height: 100vh;
-  padding-top: 130px; /* Increased for top space */
+  padding-top: 100px;
 }
 
 .dashboard-sidebar {
   position: fixed;
-  top: 70px;
+  top: 0;
   left: 0;
   width: 280px;
-  height: calc(100vh - 70px);
+  height: 100vh;
   background: var(--color-card);
   border-right: 1px solid var(--color-border);
-  padding: var(--space-xl);
+  padding: 2.5rem 0; /* Vertical padding */
   overflow-y: auto;
   transition: transform 0.3s ease;
-  z-index: 999;
+  z-index: 1050; /* Higher than navbar */
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl);
+}
+
+.dashboard-sidebar h5 {
+  padding: 0 1.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--color-primary) !important; /* Branded color for title */
+  text-transform: uppercase;
+}
+
+.dashboard-sidebar nav {
+  flex: 1;
 }
 
 .dashboard-sidebar.collapsed {
@@ -43,43 +66,67 @@
   margin-left: 0;
 }
 
+/* Sidebar Toggle Switch - Moved further down for visibility */
 .sidebar-toggle {
   position: fixed;
-  top: 85px;
-  right: var(--space-lg);
-  z-index: 1000;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  width: 44px;
-  height: 44px;
+  top: 90px; /* Significantly lowered to be clearly visible */
+  right: 1.5rem;
+  z-index: 2000; /* Much higher to stay on top */
+  background: #FFFFFF;
+  color: #0B0F1A;
+  border: none;
+  width: 50px; /* Slightly larger for better tap/click target */
+  height: 50px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
 .sidebar-toggle:hover {
-  background: var(--color-elevated);
-  border-color: var(--color-primary);
+  transform: scale(1.1) translateY(5px); /* Responsive downward movement */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+.sidebar-toggle i {
+  font-size: 1.2rem;
 }
 
 .sidebar-nav-item {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-md);
-  color: var(--color-text-muted);
+  gap: 1.5rem;
+  padding: 1.1rem 1.75rem; /* Fuller items as requested */
+  color: #FFFFFF; 
   text-decoration: none;
-  border-radius: var(--radius-md);
+  border-left: 4px solid transparent;
   transition: all 0.3s ease;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  opacity: 0.7;
 }
 
 .sidebar-nav-item:hover, .sidebar-nav-item.active {
   background: rgba(139, 92, 246, 0.1);
   color: var(--color-primary);
+  opacity: 1;
+  border-left-color: var(--color-primary);
+}
+
+.sidebar-nav-item i {
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.sidebar-nav-item span {
+  font-size: 1rem;
 }
 
 /* Sidebar Overlay */
@@ -89,7 +136,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   z-index: 998;
   display: none;
@@ -110,6 +157,7 @@
     transform: translateX(-280px);
     top: 0;
     height: 100vh;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
   }
   
   .dashboard-sidebar.active {
@@ -122,23 +170,29 @@
   }
   
   .sidebar-toggle {
-    right: var(--space-md);
-    left: auto;
-    top: 12px; /* Centered in the 70px-ish header */
+    top: 50%; /* Center in mobile header */
+    transform: translateY(-50%);
+    right: 1.25rem;
+    margin-top: -35px; /* Adjust based on navbar absolute height or just use absolute positioning relative to window top if needed */
+  }
+
+  /* Since navbar is fixed top, we center it at top of screen */
+  .sidebar-toggle {
+    top: 90px; /* Same lowered position for mobile visibility */
+    transform: none; /* Reset transform for clean positioning */
+    right: 1.25rem;
+  }
+
+  .navbar .container-fluid > .row > div:last-child {
+    padding-right: 5rem; /* More room for the larger toggle */
   }
   
   .dashboard-wrapper {
     padding-top: 80px;
   }
 
-  /* Hide main site navbar toggler on dashboard mobile */
   .navbar-toggler {
     display: none !important;
-  }
-  
-  .navbar .col-6.col-lg-9 {
-    flex: 0 0 auto;
-    width: auto;
   }
 }
 
@@ -151,16 +205,10 @@
   }
 }
 
+/* Table Responsive Styles */
 @media (max-width: 991px) {
-  .table thead {
-    display: none; /* Hide headers on very small screens or use custom responsive table styles */
-  }
-
-  .table, .table tbody, .table tr, .table td {
-    display: block;
-    width: 100%;
-  }
-
+  .table thead { display: none; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
   .table tr {
     margin-bottom: var(--space-md);
     border: 1px solid var(--color-border);
@@ -168,55 +216,29 @@
     padding: var(--space-sm);
     background: var(--color-elevated);
   }
-
   .table td {
     text-align: right;
     padding-left: 50%;
     position: relative;
     border-bottom: 1px solid var(--color-divider);
   }
-
   .table td::before {
     content: attr(data-label);
     position: absolute;
     left: var(--space-md);
     width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
     text-align: left;
     font-weight: 600;
     color: var(--color-text-muted);
   }
-
-  .table td:last-child {
-    border-bottom: 0;
-    text-align: center;
-    padding-left: var(--space-md);
-  }
-
-  .table td:last-child::before {
-    display: none;
-  }
+  .table td:last-child { border-bottom: 0; text-align: center; padding-left: var(--space-md); }
+  .table td:last-child::before { display: none; }
 }
 
 @media (min-width: 992px) {
-  /* Show headers on desktop */
-  .table thead {
-    display: table-header-group;
-  }
-  .table {
-    display: table;
-  }
-  .table tr {
-    display: table-row;
-    background: transparent;
-  }
-  .table td {
-    display: table-cell;
-    text-align: left;
-    padding-left: var(--space-lg);
-  }
-  .table td::before {
-    display: none;
-  }
+  .table thead { display: table-header-group; }
+  .table { display: table; }
+  .table tr { display: table-row; }
+  .table td { display: table-cell; text-align: left; padding: var(--space-md) var(--space-lg); }
+  .table td::before { display: none; }
 }
