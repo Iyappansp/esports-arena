@@ -174,7 +174,7 @@ function initCounters() {
 function playVideo() {
   const container = document.getElementById('video-placeholder');
   if (container) {
-    container.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/S2C1u04rXn4?autoplay=1" title="Valorant Gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0;"></iframe>';
+    container.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/erTa9fMj9m4?autoplay=1" title="Valorant Gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0;"></iframe>';
   }
 }
 

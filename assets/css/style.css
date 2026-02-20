@@ -513,6 +513,7 @@ a:hover {
   justify-content: center;
   position: relative;
   padding: 140px 0 var(--space-2xl) 0; /* Increased top padding to prevent header overlap */
+  /* background: url('../hero.png') no-repeat center center/cover; */
   overflow: hidden;
 }
 
