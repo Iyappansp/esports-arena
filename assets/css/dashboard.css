@@ -69,21 +69,21 @@
 /* Sidebar Toggle Switch - Moved further down for visibility */
 .sidebar-toggle {
   position: fixed;
-  top: 90px; /* Significantly lowered to be clearly visible */
-  right: 1.5rem;
-  z-index: 2000; /* Much higher to stay on top */
-  background: #FFFFFF;
-  color: #0B0F1A;
+  top: 1.25rem; /* Standard top corner as requested */
+  right: 1.25rem;
+  z-index: 2005; /* Above everything else */
+  background: var(--color-primary); /* Use primary color for visibility */
+  color: #FFFFFF;
   border: none;
-  width: 50px; /* Slightly larger for better tap/click target */
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
 }
 
 .sidebar-toggle:hover {
@@ -99,21 +99,59 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding: 1.1rem 1.75rem; /* Fuller items as requested */
+  padding: 1.1rem 1.75rem;
   color: #FFFFFF; 
   text-decoration: none;
   border-left: 4px solid transparent;
   transition: all 0.3s ease;
   margin-bottom: 0.25rem;
-  font-weight: 500;
-  opacity: 0.7;
+  font-weight: 600; /* Increased weight */
+  opacity: 0.85; /* Increased from 0.7 */
 }
 
 .sidebar-nav-item:hover, .sidebar-nav-item.active {
-  background: rgba(139, 92, 246, 0.1);
+  background: rgba(139, 92, 246, 0.15);
   color: var(--color-primary);
   opacity: 1;
   border-left-color: var(--color-primary);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+/* User Profile Sidebar Section */
+.sidebar-user {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  box-shadow: var(--glow-primary);
+}
+
+.user-info h6 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.user-info p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
 }
 
 .sidebar-nav-item i {
@@ -170,25 +208,13 @@
   }
   
   .sidebar-toggle {
-    top: 50%; /* Center in mobile header */
-    transform: translateY(-50%);
+    top: 1.25rem; /* Ensure same position as desktop for consistency */
     right: 1.25rem;
-    margin-top: -35px; /* Adjust based on navbar absolute height or just use absolute positioning relative to window top if needed */
+    transform: none;
   }
 
-  /* Since navbar is fixed top, we center it at top of screen */
-  .sidebar-toggle {
-    top: 90px; /* Same lowered position for mobile visibility */
-    transform: none; /* Reset transform for clean positioning */
-    right: 1.25rem;
-  }
-
-  .navbar .container-fluid > .row > div:last-child {
-    padding-right: 5rem; /* More room for the larger toggle */
-  }
-  
-  .dashboard-wrapper {
-    padding-top: 80px;
+  .sidebar-logout {
+    display: none !important; /* Remove logout CTA from hamburger menu */
   }
 
   .navbar-toggler {
@@ -202,6 +228,8 @@
   }
   .dashboard-main {
     margin-left: 240px;
+    width: calc(100% - 240px); /* Ensure accurate width calculation */
+    overflow-x: hidden; /* Prevent horizontal scroll on right side */
   }
 }
 

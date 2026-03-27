@@ -51,6 +51,10 @@
       border-color: var(--color-primary);
       color: #ffffff;
     }
+    .apple-login-btn:hover {
+      background: #000000 !important;
+      border-color: #ffffff !important;
+    }
   </style>
 </head>
 <body>
@@ -78,7 +82,12 @@
 
         <div class="form-group">
           <label class="form-label" for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter your password" required data-testid="login-password-input">
+          <div class="password-wrapper">
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" required data-testid="login-password-input">
+            <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
           <div class="form-error">Password is required</div>
         </div>
 
@@ -103,6 +112,10 @@
           <button type="button" class="social-login-btn" data-testid="google-login-btn">
             <i class="fab fa-google" style="font-size: 1.2rem; color: var(--color-accent);"></i>
             <span>Continue with Google</span>
+          </button>
+          <button type="button" class="social-login-btn apple-login-btn" data-testid="apple-login-btn">
+            <i class="fab fa-apple" style="font-size: 1.2rem; color: var(--color-text);"></i>
+            <span>Continue with Apple</span>
           </button>
           <button type="button" class="social-login-btn" data-testid="discord-login-btn">
             <i class="fab fa-discord" style="font-size: 1.2rem; color: var(--color-secondary);"></i>

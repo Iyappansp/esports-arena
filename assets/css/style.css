@@ -419,7 +419,7 @@ a:hover {
 }
 
 .navbar-logo {
-  height: 60px; /* Increased from 40px */
+  height: 75px; /* Increased from 60px as requested */
   width: auto;
   object-fit: contain;
   transition: transform var(--transition-normal);
@@ -640,6 +640,31 @@ a:hover {
   font-family: var(--font-body);
   font-size: 1rem;
   transition: border-color var(--transition-normal), background var(--transition-normal), box-shadow var(--transition-normal);
+  padding-right: 3rem; /* Space for password toggle icon */
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1.25rem;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+  z-index: 10;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle:hover {
+  color: var(--color-primary);
 }
 
 .form-control:focus {
