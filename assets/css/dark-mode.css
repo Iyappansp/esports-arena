@@ -106,8 +106,8 @@ body.light-mode .btn-ghost:hover {
 /* Theme Toggle Button */
 .theme-toggle {
   position: relative;
-  width: 50px;
-  height: 32px;
+  width: 54px;
+  height: 36px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
@@ -121,8 +121,8 @@ body.light-mode .btn-ghost:hover {
 .theme-toggle::before {
   content: '';
   position: absolute;
-  top: 4px;
-  left: 4px;
+  top: 6px;
+  left: 6px;
   width: 22px;
   height: 22px;
   background: var(--color-text);
@@ -137,18 +137,18 @@ body.light-mode .theme-toggle {
 }
 
 body.light-mode .theme-toggle::before {
-  transform: translateX(20px);
+  transform: translateX(18px);
 }
 
 /* RTL Toggle Button */
 .rtl-toggle {
-  height: 32px;
-  padding: 0 1rem;
+  height: 40px;
+  padding: 0 1.25rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   color: var(--color-text);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
   transition: all var(--transition-normal);
@@ -217,6 +217,34 @@ body.light-mode .theme-toggle::after {
     background-position: 6px center;
 }
 
-body.light-mode .theme-toggle {
-    background-image: none;
+
+/* Dashboard Sidebar Light Mode Overrides */
+body.light-mode .dashboard-sidebar {
+  background: var(--color-elevated);
+  border-right: 1px solid var(--color-border);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
 }
+
+body.light-mode .sidebar-user {
+  background: rgba(124, 58, 237, 0.03);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+body.light-mode .sidebar-nav-item {
+  color: var(--color-text-muted);
+}
+
+body.light-mode .sidebar-nav-item:hover, 
+body.light-mode .sidebar-nav-item.active {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--color-primary);
+}
+
+body.light-mode .sidebar-logout {
+  border-top: 1px solid var(--color-divider);
+}
+
+body.light-mode .dashboard-sidebar h5 {
+  color: var(--color-primary) !important;
+  opacity: 0.8;
+}

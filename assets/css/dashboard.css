@@ -68,15 +68,11 @@
 
 /* Sidebar Toggle Switch - Moved further down for visibility */
 .sidebar-toggle {
-  position: fixed;
-  top: 1.25rem; /* Standard top corner as requested */
-  right: 1.25rem;
-  z-index: 2005; /* Above everything else */
   background: var(--color-primary); /* Use primary color for visibility */
   color: #FFFFFF;
   border: none;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -84,15 +80,8 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-}
-
-.sidebar-toggle:hover {
-  transform: scale(1.1) translateY(5px); /* Responsive downward movement */
-  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-}
-
-.sidebar-toggle i {
-  font-size: 1.2rem;
+  flex-shrink: 0;
+  z-index: 1001; /* Above navbar content */
 }
 
 .sidebar-nav-item {
@@ -100,11 +89,11 @@
   align-items: center;
   gap: 1.5rem;
   padding: 1.1rem 1.75rem;
-  color: #FFFFFF; 
+  color: var(--color-text); 
   text-decoration: none;
   border-left: 4px solid transparent;
   transition: all 0.3s ease;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   font-weight: 600; /* Increased weight */
   opacity: 0.85; /* Increased from 0.7 */
 }
@@ -208,9 +197,7 @@
   }
   
   .sidebar-toggle {
-    top: 1.25rem; /* Ensure same position as desktop for consistency */
-    right: 1.25rem;
-    transform: none;
+    display: flex; /* Ensure it stays visible as part of flex */
   }
 
   .sidebar-logout {

@@ -53,19 +53,13 @@
           </div>
 
           <!-- Mobile Menu Toggle -->
-          <button class="navbar-toggler d-lg-none" data-testid="navbar-toggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          <button class="navbar-toggler d-lg-none" data-testid="navbar-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+          
+          <button class="sidebar-toggle" data-testid="sidebar-toggle" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
         </div>
       </div>
     </div>
   </nav>
-
-  <button class="sidebar-toggle" data-testid="sidebar-toggle" aria-label="Toggle sidebar">
-    <i class="fas fa-bars"></i>
-  </button>
 
   <div class="dashboard-wrapper">
     <aside class="dashboard-sidebar" data-testid="dashboard-sidebar">
@@ -97,14 +91,22 @@
           <i class="fas fa-cog"></i>
           <span>Settings</span>
         </a>
-      </nav>
 
-      <div class="sidebar-logout">
-        <a href="index.html" class="sidebar-nav-item" style="color: var(--color-accent); border-radius: var(--radius-md);">
+        <div style="margin: var(--space-lg) 0 var(--space-md) var(--space-lg); font-size: 0.75rem; font-weight: 800; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Main Site</div>
+        
+        <a href="index.html" class="sidebar-nav-item">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="team.html" class="sidebar-nav-item">
+          <i class="fas fa-users"></i>
+          <span>Our Team</span>
+        </a>
+        <a href="index.html" class="sidebar-nav-item" style="color: var(--color-accent); margin-top: var(--space-xl);">
           <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span>
         </a>
-      </div>
+      </nav>
     </aside>
 
     <main class="dashboard-main" data-testid="dashboard-main">
