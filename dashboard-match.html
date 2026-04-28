@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="E-Sports Arena Match - Dashboard">
   <title>Match | E-Sports Arena Dashboard</title>
-  
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -15,6 +17,7 @@
   <link rel="stylesheet" href="./assets/css/rtl.css">
   <link rel="stylesheet" href="./assets/css/dashboard.css">
 </head>
+
 <body>
 
   <nav class="navbar">
@@ -40,7 +43,7 @@
             <a href="league.html" class="nav-link">League</a>
             <a href="match.html" class="nav-link">Match</a>
             <a href="team.html" class="nav-link">Team</a>
-            
+
             <!-- Mobile Only Links removed -->
           </div>
 
@@ -50,8 +53,9 @@
           </div>
 
           <!-- Mobile Menu Toggle -->
-          <button class="navbar-toggler d-lg-none" data-testid="navbar-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
-          
+          <button class="navbar-toggler d-lg-none" data-testid="navbar-toggle"
+            aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+
 
         </div>
       </div>
@@ -60,8 +64,12 @@
 
   <div class="dashboard-wrapper">
     <aside class="dashboard-sidebar" data-testid="dashboard-sidebar">
-      <h5 style="font-family: var(--font-heading); margin-bottom: var(--space-xl); color: var(--color-text);">DASHBOARD</h5>
-      
+      <div class="px-4 mb-4">
+        <a href="index.html" class="navbar-brand">
+          <img src="assets/logo.png" alt="E-Sports Arena" class="navbar-logo" style="height: 50px;">
+        </a>
+      </div>
+
       <nav>
         <a href="dashboard.html" class="sidebar-nav-item" data-testid="nav-overview">
           <i class="fas fa-th-large"></i>
@@ -89,8 +97,10 @@
           <span>Settings</span>
         </a>
 
-        <div style="margin: var(--space-lg) 0 var(--space-md) var(--space-lg); font-size: 0.75rem; font-weight: 800; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Main Site</div>
-        
+        <div
+          style="margin: var(--space-lg) 0 var(--space-md) var(--space-lg); font-size: 0.75rem; font-weight: 800; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em;">
+          Main Site</div>
+
         <a href="index.html" class="sidebar-nav-item">
           <i class="fas fa-home"></i>
           <span>Home</span>
@@ -107,9 +117,11 @@
     </aside>
 
     <main class="dashboard-main" data-testid="dashboard-main">
-      <div class="mb-5">
-        <h1 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.5rem;">Match Management</h1>
-        <p style="color: var(--color-text-muted);">Manage upcoming and past matches.</p>
+      <div class="dashboard-hero reveal" data-testid="dashboard-hero">
+        <div class="dashboard-hero-content">
+          <h1 class="text-gradient">Match Management</h1>
+          <p>Manage upcoming and past matches across all divisions.</p>
+        </div>
       </div>
 
       <div class="card mb-4">
@@ -132,27 +144,35 @@
             </thead>
             <tbody>
               <tr>
-                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Cyber Wolves</td>
+                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Cyber
+                  Wolves</td>
                 <td data-label="Game"><span class="badge badge-secondary">Valorant</span></td>
                 <td data-label="Date">Feb 15, 2026</td>
                 <td data-label="Time">18:00 UTC</td>
                 <td data-label="Tournament">Champions League</td>
                 <td data-label="Status"><span class="badge badge-primary">Upcoming</span></td>
                 <td data-label="Action">
-                  <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;"><i class="fas fa-edit"></i></button>
-                  <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem; border-color: var(--color-accent); color: var(--color-accent);"><i class="fas fa-trash"></i></button>
+                  <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;"><i
+                      class="fas fa-edit"></i></button>
+                  <button class="btn-ghost"
+                    style="padding: 0.2rem 0.6rem; font-size: 0.8rem; border-color: var(--color-accent); color: var(--color-accent);"><i
+                      class="fas fa-trash"></i></button>
                 </td>
               </tr>
               <tr>
-                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Digital Titans</td>
+                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Digital
+                  Titans</td>
                 <td data-label="Game"><span class="badge badge-secondary">CS2</span></td>
                 <td data-label="Date">Feb 16, 2026</td>
                 <td data-label="Time">20:00 UTC</td>
                 <td data-label="Tournament">Pro Circuit</td>
                 <td data-label="Status"><span class="badge badge-primary">Upcoming</span></td>
                 <td data-label="Action">
-                  <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;"><i class="fas fa-edit"></i></button>
-                  <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem; border-color: var(--color-accent); color: var(--color-accent);"><i class="fas fa-trash"></i></button>
+                  <button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;"><i
+                      class="fas fa-edit"></i></button>
+                  <button class="btn-ghost"
+                    style="padding: 0.2rem 0.6rem; font-size: 0.8rem; border-color: var(--color-accent); color: var(--color-accent);"><i
+                      class="fas fa-trash"></i></button>
                 </td>
               </tr>
             </tbody>
@@ -164,7 +184,8 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin: 0;">Past Matches</h3>
           <div class="d-flex gap-2">
-            <input type="text" class="form-control" placeholder="Search matches..." style="width: 250px; padding-top: 0.5rem; padding-bottom: 0.5rem;">
+            <input type="text" class="form-control" placeholder="Search matches..."
+              style="width: 250px; padding-top: 0.5rem; padding-bottom: 0.5rem;">
           </div>
         </div>
         <div class="table-responsive">
@@ -181,20 +202,24 @@
             </thead>
             <tbody>
               <tr>
-                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Elite Force</td>
+                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Phoenix Rising vs Elite Force
+                </td>
                 <td data-label="Game"><span class="badge badge-secondary">Valorant</span></td>
                 <td data-label="Date">Feb 12, 2026</td>
                 <td data-label="Score" style="color: var(--color-primary);">13-8</td>
                 <td data-label="Winner" style="color: var(--color-text);">Phoenix Rising</td>
-                <td data-label="Action"><button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;">Details</button></td>
+                <td data-label="Action"><button class="btn-ghost"
+                    style="padding: 0.2rem 0.6rem; font-size: 0.8rem;">Details</button></td>
               </tr>
-               <tr>
-                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Cyber Wolves</td>
+              <tr>
+                <td data-label="Match" style="font-weight: 600; color: var(--color-text);">Storm Raiders vs Cyber Wolves
+                </td>
                 <td data-label="Game"><span class="badge badge-secondary">CS2</span></td>
                 <td data-label="Date">Feb 11, 2026</td>
                 <td data-label="Score" style="color: var(--color-primary);">16-12</td>
                 <td data-label="Winner" style="color: var(--color-text);">Storm Raiders</td>
-                <td data-label="Action"><button class="btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;">Details</button></td>
+                <td data-label="Action"><button class="btn-ghost"
+                    style="padding: 0.2rem 0.6rem; font-size: 0.8rem;">Details</button></td>
               </tr>
             </tbody>
           </table>
@@ -207,4 +232,5 @@
   <script src="./assets/js/main.js" defer></script>
   <script src="./assets/js/dashboard.js" defer></script>
 </body>
+
 </html>

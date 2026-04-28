@@ -439,8 +439,8 @@ a:hover {
 }
 
 .navbar-logo {
-  height: 120px;
-  /* Increased from 75px for better visibility */
+  height: 80px;
+  /* Reduced from 120px for better visual balance */
   width: auto;
   max-width: 100%;
   object-fit: contain;
@@ -466,8 +466,8 @@ a:hover {
 
 @media (max-width: 991px) {
   .navbar-logo {
-    height: 60px;
-    /* Increased from 45px */
+    height: 50px;
+    /* Reduced from 60px */
   }
 }
 
