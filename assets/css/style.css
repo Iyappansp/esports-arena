@@ -857,8 +857,8 @@ textarea.form-control {
 }
 
 .footer-logo {
-  height: 70px;
-  /* Increased from 50px */
+  height: 100px;
+  /* Increased from 70px for better visibility */
   width: auto;
   margin-bottom: var(--space-lg);
   object-fit: contain;
