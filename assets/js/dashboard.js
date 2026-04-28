@@ -5,60 +5,16 @@
 
 // ==================== SIDEBAR TOGGLE ====================
 function initDashboardSidebar() {
-  const sidebarToggle = document.querySelector('[data-testid="sidebar-toggle"]');
   const sidebar = document.querySelector('.dashboard-sidebar');
   const main = document.querySelector('.dashboard-main');
   
-  // Create overlay if it doesn't exist
-  let overlay = document.querySelector('.sidebar-overlay');
-  if (!overlay) {
-    overlay = document.createElement('div');
-    overlay.className = 'sidebar-overlay';
-    document.body.appendChild(overlay);
-  }
-    
-  if (sidebarToggle && sidebar && main) {
-    sidebarToggle.addEventListener('click', () => {
-      if (window.innerWidth <= 991) {
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
-        // Prevent body scroll when sidebar is open on mobile
-        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
-      } else {
-        sidebar.classList.toggle('collapsed');
-        main.classList.toggle('expanded');
-      }
-      
-      // Save state for desktop view
-      const isCollapsed = sidebar.classList.contains('collapsed');
-      localStorage.setItem('sidebarCollapsed', isCollapsed);
-    });
-    
-    // Close sidebar when clicking overlay
-    overlay.addEventListener('click', () => {
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-    
-    // Close sidebar when clicking outside on mobile
-    document.addEventListener('click', (e) => {
-      if (window.innerWidth <= 991 && 
-          sidebar.classList.contains('active') && 
-          !sidebar.contains(e.target) && 
-          !sidebarToggle.contains(e.target)) {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-  }
-  
-  // Load saved state (only applies to desktop collapsed state)
-  const savedState = localStorage.getItem('sidebarCollapsed');
-  if (savedState === 'true' && window.innerWidth > 991) {
-    sidebar.classList.add('collapsed');
-    if (main) main.classList.add('expanded');
+  if (sidebar && main) {
+    // Load saved state (only applies to desktop collapsed state)
+    const savedState = localStorage.getItem('sidebarCollapsed');
+    if (savedState === 'true' && window.innerWidth > 991) {
+      sidebar.classList.add('collapsed');
+      if (main) main.classList.add('expanded');
+    }
   }
 }
 
